@@ -109,15 +109,6 @@
           <p class="text-xs text-cosmic-purple/80 hidden sm:block">Relationship & Soulmate Destiny Divination</p>
         </div>
       </div>
-
-      <!-- Google Sheets Config Trigger -->
-      <button id="openSheetModalBtn" class="flex items-center gap-2 px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold glass-card hover:bg-cosmic-700/80 transition border border-cosmic-gold/30 text-cosmic-gold">
-        <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/>
-        </svg>
-        <span id="sheetStatusText">Connect Sheet</span>
-        <span id="statusIndicator" class="w-2 h-2 rounded-full bg-red-400 inline-block"></span>
-      </button>
     </div>
   </header>
 
@@ -295,10 +286,10 @@
         </div>
       </div>
 
-      <!-- Google Sheet Submission Status Badge -->
+      <!-- Submission Log Status Badge -->
       <div id="sheetLogStatus" class="mt-6 text-center text-xs py-2 px-4 rounded-lg bg-cosmic-900/80 border border-slate-700 text-slate-400 flex items-center justify-center gap-2">
-        <span id="sheetLogIcon">ℹ️</span>
-        <span id="sheetLogMsg">Google Sheets integration not active. Click 'Connect Sheet' to enable automatic saving.</span>
+        <span id="sheetLogIcon">✨</span>
+        <span id="sheetLogMsg">Your destiny reading is being recorded in the celestial archives.</span>
       </div>
 
       <!-- Action Buttons -->
@@ -317,195 +308,15 @@
     <p>Celestial Relationship Divination &copy; 2026. Designed for entertainment and romantic insight.</p>
   </footer>
 
-  <!-- ================= GOOGLE APPS SCRIPT SETTINGS MODAL ================= -->
-  <div id="sheetModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-    <div class="glass-card max-w-2xl w-full rounded-2xl p-6 sm:p-8 border border-cosmic-gold/40 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-      
-      <!-- Close Button -->
-      <button id="closeSheetModalBtn" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl p-1">
-        ✕
-      </button>
-
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-xl">
-          📊
-        </div>
-        <div>
-          <h3 class="font-serif font-bold text-lg text-emerald-300">Google Sheets Integration Setup</h3>
-          <p class="text-xs text-slate-400">Automatically store every submitted divination in your personal Google Sheet</p>
-        </div>
-      </div>
-
-      <!-- Step-by-Step Instructions -->
-      <div class="space-y-4 text-xs text-slate-300 bg-cosmic-900/60 p-4 rounded-xl border border-cosmic-purple/30 mb-6">
-        <h4 class="font-semibold text-cosmic-gold text-sm">Step-by-Step Instructions:</h4>
-        <ol class="list-decimal pl-4 space-y-2 leading-relaxed">
-          <li>Create a new <strong>Google Sheet</strong> in your Google Drive.</li>
-          <li>In the sheet, click <strong>Extensions ➔ Apps Script</strong>.</li>
-          <li>Delete any code in the Apps Script editor and paste the snippet below:</li>
-        </ol>
-
-        <!-- Code Block -->
-        <div class="relative">
-          <pre class="bg-black/80 p-3 rounded-lg text-[11px] font-mono text-emerald-400 overflow-x-auto border border-slate-700"><code>function doPost(e) {
-  try {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    var data = JSON.parse(e.postData.contents);
-    
-    // Append headers if row 1 is empty
-    if (sheet.getLastRow() === 0) {
-      sheet.appendRow(["Timestamp", "Male Name", "Male DOB", "Female Name", "Female DOB", "Start Date", "Match Score %", "Zodiac Pair"]);
-    }
-    
-    sheet.appendRow([
-      new Date(),
-      data.maleName || '',
-      data.maleDob || '',
-      data.femaleName || '',
-      data.femaleDob || '',
-      data.startDate || '',
-      data.score || '',
-      data.zodiacPair || ''
-    ]);
-    
-    return ContentService.createTextOutput(JSON.stringify({"result": "success"}))
-      .setMimeType(ContentService.MimeType.JSON);
-  } catch (err) {
-    return ContentService.createTextOutput(JSON.stringify({"result": "error", "error": err.toString()}))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-}</code></pre>
-          <button id="copyScriptBtn" class="absolute top-2 right-2 px-2 py-1 bg-cosmic-700 hover:bg-cosmic-600 text-xs text-cosmic-gold rounded border border-cosmic-gold/30">
-            Copy Code
-          </button>
-        </div>
-
-        <ol start="4" class="list-decimal pl-4 space-y-2 leading-relaxed">
-          <li>Click <strong>Deploy ➔ New deployment</strong> in Apps Script.</li>
-          <li>Select type: <strong>Web app</strong>. Execute as: <strong>Me</strong>. Who has access: <strong>Anyone</strong>.</li>
-          <li>Click <strong>Deploy</strong>, grant permissions, copy the <strong>Web App URL</strong>, and paste it below!</li>
-        </ol>
-      </div>
-
-      <!-- Webhook Input Form -->
-      <div class="space-y-4">
-        <div>
-          <label class="block text-xs font-semibold text-cosmic-gold mb-1">Google Apps Script Web App URL</label>
-          <input type="url" id="scriptUrlInput" placeholder="https://script.google.com/macros/s/.../exec"
-            class="w-full glass-input rounded-xl px-3 py-2.5 text-xs sm:text-sm text-slate-100 placeholder-slate-600">
-        </div>
-
-        <div class="flex items-center justify-between gap-3 pt-2">
-          <button id="clearScriptUrlBtn" class="px-4 py-2 rounded-xl text-xs font-semibold text-rose-400 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30">
-            Disconnect Sheet
-          </button>
-          <button id="saveScriptUrlBtn" class="px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-500 hover:bg-emerald-400 text-cosmic-900 shadow-lg font-bold">
-            Save Webhook Settings
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
   <!-- JavaScript Logic -->
   <script>
-    // ================= GLOBAL STATE & STORAGE =================
-    const STORAGE_KEY = 'love_oracle_script_url';
-    let googleScriptUrl = localStorage.getItem(STORAGE_KEY) || '';
-
-    // Elements
-    const openSheetModalBtn = document.getElementById('openSheetModalBtn');
-    const closeSheetModalBtn = document.getElementById('closeSheetModalBtn');
-    const sheetModal = document.getElementById('sheetModal');
-    const scriptUrlInput = document.getElementById('scriptUrlInput');
-    const saveScriptUrlBtn = document.getElementById('saveScriptUrlBtn');
-    const clearScriptUrlBtn = document.getElementById('clearScriptUrlBtn');
-    const sheetStatusText = document.getElementById('sheetStatusText');
-    const statusIndicator = document.getElementById('statusIndicator');
-    const copyScriptBtn = document.getElementById('copyScriptBtn');
+    // ================= HARDCODED GOOGLE SCRIPT URL =================
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwHrWvT2AKfBrJ4-xEtE6ul_mw0ozNe8Nu5k7LMmkd8A44AVgW5XxxQB1a3v7EyG-tYCw/exec';
 
     const divinationForm = document.getElementById('divinationForm');
     const loadingOverlay = document.getElementById('loadingOverlay');
     const resultCard = document.getElementById('resultCard');
     const reDivineBtn = document.getElementById('reDivineBtn');
-
-    // Setup Initial UI state for Webhook
-    updateWebhookStatusUI();
-
-    // Modal Control
-    openSheetModalBtn.addEventListener('click', () => {
-      scriptUrlInput.value = googleScriptUrl;
-      sheetModal.classList.remove('hidden');
-    });
-
-    closeSheetModalBtn.addEventListener('click', () => {
-      sheetModal.classList.add('hidden');
-    });
-
-    // Save Webhook URL
-    saveScriptUrlBtn.addEventListener('click', () => {
-      const url = scriptUrlInput.value.trim();
-      if (url && !url.startsWith('https://script.google.com')) {
-        alert('https://script.google.com/macros/s/AKfycbx9E44fFpAs4wYCO4BbAWZqkDfyv1es9rwlMTP81fmqtwod1MY74Sjh_vVZFAlm9pmcDg/exec');
-        return;
-      }
-      googleScriptUrl = url;
-      localStorage.setItem(STORAGE_KEY, googleScriptUrl);
-      updateWebhookStatusUI();
-      sheetModal.classList.add('hidden');
-    });
-
-    // Clear Webhook URL
-    clearScriptUrlBtn.addEventListener('click', () => {
-      googleScriptUrl = '';
-      localStorage.removeItem(STORAGE_KEY);
-      scriptUrlInput.value = '';
-      updateWebhookStatusUI();
-      sheetModal.classList.add('hidden');
-    });
-
-    // Copy Apps Script snippet helper
-    copyScriptBtn.addEventListener('click', () => {
-      const code = `function doPost(e) {
-  try {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    var data = JSON.parse(e.postData.contents);
-    if (sheet.getLastRow() === 0) {
-      sheet.appendRow(["Timestamp", "Male Name", "Male DOB", "Female Name", "Female DOB", "Start Date", "Match Score %", "Zodiac Pair"]);
-    }
-    sheet.appendRow([
-      new Date(),
-      data.maleName || '',
-      data.maleDob || '',
-      data.femaleName || '',
-      data.femaleDob || '',
-      data.startDate || '',
-      data.score || '',
-      data.zodiacPair || ''
-    ]);
-    return ContentService.createTextOutput(JSON.stringify({"result": "success"}))
-      .setMimeType(ContentService.MimeType.JSON);
-  } catch (err) {
-    return ContentService.createTextOutput(JSON.stringify({"result": "error", "error": err.toString()}))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-}`;
-      navigator.clipboard.writeText(code).then(() => {
-        copyScriptBtn.textContent = 'Copied!';
-        setTimeout(() => copyScriptBtn.textContent = 'Copy Code', 2000);
-      });
-    });
-
-    function updateWebhookStatusUI() {
-      if (googleScriptUrl) {
-        sheetStatusText.textContent = 'Sheet Connected';
-        statusIndicator.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse';
-      } else {
-        sheetStatusText.textContent = 'Connect Sheet';
-        statusIndicator.className = 'w-2.5 h-2.5 rounded-full bg-rose-400';
-      }
-    }
 
     // ================= ASTROLOGY & NUMEROLOGY LOGIC =================
 
@@ -573,12 +384,8 @@
         loadingOverlay.classList.add('hidden');
         resultCard.classList.remove('hidden');
 
-        // Log to Google Sheet if connected
-        if (googleScriptUrl) {
-          logToGoogleSheet(reading);
-        } else {
-          updateLogStatusBadge('info', "Google Sheet not connected. Form shown locally.");
-        }
+        // Automatically log to Google Sheet
+        logToGoogleSheet(reading);
       }, 2200);
     });
 
@@ -695,7 +502,7 @@
     // ================= LOG TO GOOGLE SHEETS VIA FETCH =================
 
     function logToGoogleSheet(data) {
-      updateLogStatusBadge('loading', "Logging entry to Google Sheet...");
+      updateLogStatusBadge('loading', "Recording destiny in the celestial archives...");
 
       const payload = {
         maleName: data.maleName,
@@ -707,18 +514,18 @@
         zodiacPair: `${data.maleZodiac.sign} + ${data.femaleZodiac.sign}`
       };
 
-      fetch(googleScriptUrl, {
+      fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors', // Standard cross-origin setting for Google Apps Script Web Apps
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       })
       .then(() => {
-        updateLogStatusBadge('success', "Successfully recorded reading to Google Sheet!");
+        updateLogStatusBadge('success', "Your bond and reading have been permanently archived!");
       })
       .catch((error) => {
         console.error('Error logging to sheet:', error);
-        updateLogStatusBadge('error', "Failed to reach Google Sheets webhook endpoint.");
+        updateLogStatusBadge('error', "Reading complete. Note: Unable to reach destination archives.");
       });
     }
 
@@ -733,14 +540,11 @@
         icon.textContent = "⏳";
         badge.className = "mt-6 text-center text-xs py-2 px-4 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300 flex items-center justify-center gap-2";
       } else if (type === 'success') {
-        icon.textContent = "✅";
+        icon.textContent = "✨";
         badge.className = "mt-6 text-center text-xs py-2 px-4 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 flex items-center justify-center gap-2";
       } else if (type === 'error') {
         icon.textContent = "⚠️";
         badge.className = "mt-6 text-center text-xs py-2 px-4 rounded-lg bg-rose-500/10 border border-rose-500/30 text-rose-300 flex items-center justify-center gap-2";
-      } else {
-        icon.textContent = "ℹ️";
-        badge.className = "mt-6 text-center text-xs py-2 px-4 rounded-lg bg-cosmic-900/80 border border-slate-700 text-slate-400 flex items-center justify-center gap-2";
       }
     }
   </script>
