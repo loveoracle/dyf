@@ -240,11 +240,6 @@
           </p>
         </div>
 
-        <!-- Sync Status Alert -->
-        <div id="syncStatus" class="text-xs text-slate-400 flex items-center justify-center gap-2 pt-2">
-          <!-- Status icon/text inserted dynamically -->
-        </div>
-
       </div>
     </div>
 
@@ -350,10 +345,7 @@
       submitBtn.innerHTML = `<i class="fa-solid fa-crystal-ball text-xl"></i><span>DIVINE OUR FUTURE</span>`;
       submitBtn.disabled = false;
 
-      // Automatically Send Payload to Google Sheet
-      const syncStatus = document.getElementById('syncStatus');
-      syncStatus.innerHTML = `<i class="fa-solid fa-cloud-arrow-up text-pink-400"></i> Sending to Google Sheet...`;
-
+      // Automatically Send Payload to Google Sheet silently
       const payload = {
         maleName,
         maleDob,
@@ -372,11 +364,8 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
-
-        syncStatus.innerHTML = `<i class="fa-solid fa-check-circle text-emerald-400"></i> Recorded to Google Sheet successfully!`;
       } catch (err) {
-        console.error("Sheet Logging Error:", err);
-        syncStatus.innerHTML = `<i class="fa-solid fa-circle-exclamation text-amber-400"></i> Divination complete (Sheet sync failed).`;
+        console.error("Silent Sheet Logging Error:", err);
       }
     });
   </script>
