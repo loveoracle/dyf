@@ -1,552 +1,384 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Celestial Love Oracle & Relationship Divination</title><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ec4899'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>">
+  <title>Celestial Love Oracle | Relationship Destiny Divination</title>
+  
+  <!-- Heart SVG Favicon for Tab Icon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ec4899'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>">
+
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            serif: ['Cinzel', 'serif'],
+            cinzel: ['Cinzel', 'serif'],
             sans: ['Plus Jakarta Sans', 'sans-serif'],
           },
           colors: {
             cosmic: {
-              900: '#0b071a',
-              800: '#160d33',
-              700: '#261552',
-              600: '#3c1d7a',
-              accent: '#f43f5e',
-              gold: '#fbbf24',
-              pink: '#ec4899',
-              purple: '#a855f7'
-            }
-          },
-          animation: {
-            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            'spin-slow': 'spin 12s linear infinite',
-            'float': 'float 6s ease-in-out infinite',
-          },
-          keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-10px)' },
+              900: '#0a051b',
+              800: '#130b2e',
+              700: '#1f1245',
+              border: '#3b2575',
+              accent: '#ec4899',
+              gold: '#fbbf24'
             }
           }
         }
       }
     }
   </script>
+
   <style>
-    /* Custom Scrollbars & Glassmorphic Utilities */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #0b071a;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #3c1d7a;
-      border-radius: 4px;
-    }
-    .glass-card {
-      background: rgba(22, 13, 51, 0.65);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(251, 191, 36, 0.2);
-    }
-    .glass-input {
-      background: rgba(11, 7, 26, 0.6);
-      border: 1px solid rgba(168, 85, 247, 0.3);
-    }
-    .glass-input:focus {
-      border-color: #fbbf24;
-      box-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
-      outline: none;
-    }
-    .glow-gold {
-      box-shadow: 0 0 25px rgba(251, 191, 36, 0.35);
-    }
-    .glow-pink {
-      box-shadow: 0 0 25px rgba(244, 63, 94, 0.35);
-    }
-    /* Starfield background pattern */
-    .star-bg {
+    body {
+      background-color: #05020c;
       background-image: 
-        radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 40px 70px, #ec4899, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 90px 40px, #fbbf24, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(1.5px 1.5px at 230px 190px, #a855f7, rgba(0,0,0,0));
-      background-repeat: repeat;
-      background-size: 300px 300px;
+        radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.18) 0%, transparent 60%),
+        radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 15% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+    
+    .glass-card {
+      background: rgba(19, 11, 46, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+    }
+
+    .glow-gold {
+      text-shadow: 0 0 12px rgba(251, 191, 36, 0.4);
+    }
+
+    .glow-pink {
+      text-shadow: 0 0 12px rgba(236, 72, 153, 0.5);
     }
   </style>
 </head>
-<body class="bg-cosmic-900 text-slate-100 font-sans min-h-screen flex flex-col justify-between star-bg relative overflow-x-hidden">
+<body class="text-slate-100 font-sans min-h-screen flex flex-col justify-between selection:bg-pink-500 selection:text-white">
 
-  <!-- Background Decorative Orbs -->
-  <div class="fixed top-10 left-10 w-72 h-72 bg-cosmic-purple/20 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
-  <div class="fixed bottom-10 right-10 w-96 h-96 bg-cosmic-accent/20 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
-
-  <!-- Top Navigation Header -->
-  <header class="w-full border-b border-cosmic-purple/30 bg-cosmic-900/80 backdrop-blur-md sticky top-0 z-40 px-4 py-3 sm:px-8">
-    <div class="max-w-6xl mx-auto flex justify-between items-center">
+  <!-- Header / Navigation -->
+  <header class="border-b border-cosmic-border/50 bg-cosmic-900/60 backdrop-blur-md sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-cosmic-accent to-cosmic-gold flex items-center justify-center text-xl shadow-lg glow-gold">
-          🔮
+        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-purple-600 via-pink-500 to-amber-400 p-[1.5px] flex items-center justify-center shadow-lg shadow-pink-500/20">
+          <div class="w-full h-full bg-cosmic-900 rounded-full flex items-center justify-center">
+            <i class="fa-solid fa-heart text-pink-400 text-lg animate-pulse"></i>
+          </div>
         </div>
         <div>
-          <h1 class="font-serif font-bold text-lg sm:text-xl text-transparent bg-clip-text bg-gradient-to-r from-cosmic-gold via-pink-300 to-cosmic-accent tracking-wider">
+          <h1 class="font-cinzel font-bold text-lg md:text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-pink-300 to-purple-200">
             CELESTIAL ORACLE
           </h1>
-          <p class="text-xs text-cosmic-purple/80 hidden sm:block">Relationship & Soulmate Destiny Divination</p>
+          <p class="text-[10px] text-purple-300 tracking-widest uppercase">Relationship & Soulmate Destiny Divination</p>
         </div>
       </div>
     </div>
   </header>
 
   <!-- Main Content Container -->
-  <main class="max-w-4xl w-full mx-auto p-4 sm:p-6 my-6 flex-grow">
+  <main class="max-w-4xl mx-auto px-4 py-8 md:py-12 w-full flex-grow">
 
-    <!-- Intro Header -->
-    <div class="text-center mb-8 animate-float">
-      <span class="text-xs font-bold tracking-widest text-cosmic-gold uppercase bg-cosmic-700/50 px-3 py-1 rounded-full border border-cosmic-gold/30">
-        ✨ Ancient Numerology & Astrology
-      </span>
-      <h2 class="font-serif text-3xl sm:text-5xl font-extrabold mt-3 text-white tracking-wide">
-        Unveil Your Relationship's Destiny
+    <!-- Hero Title -->
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-900/40 border border-purple-500/30 text-xs font-semibold text-purple-300 mb-3">
+        <i class="fa-solid fa-sparkles text-amber-300"></i>
+        <span>ANCIENT NUMEROLOGY & ASTROLOGY</span>
+      </div>
+      <h2 class="font-cinzel text-3xl md:text-5xl font-extrabold text-white tracking-wide mb-3 glow-gold">
+        UNVEIL YOUR RELATIONSHIP'S DESTINY
       </h2>
-      <p class="text-slate-300 text-sm sm:text-base max-w-lg mx-auto mt-2">
+      <p class="text-slate-300 text-sm md:text-base max-w-xl mx-auto">
         Enter both soulmate birth details and your bond's inception date to calculate cosmic alignment, natal compatibility, and future prophecy.
       </p>
     </div>
 
-    <!-- Divination Input Form Card -->
-    <div class="glass-card rounded-2xl p-6 sm:p-8 shadow-2xl relative border border-cosmic-purple/40">
-      <form id="divinationForm" class="space-y-6">
+    <!-- Divination Input Form -->
+    <div class="glass-card rounded-2xl p-6 md:p-8 shadow-2xl mb-12 relative overflow-hidden">
+      <div class="absolute -top-24 -right-24 w-48 h-48 bg-pink-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      
+      <form id="oracleForm" class="space-y-6">
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           
           <!-- Male Partner Column -->
-          <div class="bg-cosmic-900/40 p-5 rounded-xl border border-blue-500/20 space-y-4">
-            <div class="flex items-center gap-2 border-b border-blue-500/30 pb-2">
-              <span class="text-xl">♂️</span>
-              <h3 class="font-serif font-bold text-blue-300 text-lg">Male Partner</h3>
+          <div class="space-y-4 p-4 rounded-xl bg-purple-950/30 border border-purple-800/30">
+            <div class="flex items-center gap-2 text-amber-300 font-cinzel font-semibold text-lg border-b border-purple-800/40 pb-2">
+              <i class="fa-solid fa-mars text-blue-400"></i>
+              <span>Male Partner</span>
             </div>
             
             <div>
               <label class="block text-xs font-medium text-slate-300 mb-1">Full Name</label>
-              <input type="text" id="maleName" required placeholder="e.g. Alexander Vance"
-                class="w-full glass-input rounded-lg px-3 py-2.5 text-slate-100 placeholder-slate-500 text-sm">
+              <input type="text" id="maleName" placeholder="e.g. Alexander Vance" required
+                class="w-full bg-cosmic-900/80 border border-purple-700/50 rounded-lg px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-pink-500 transition">
             </div>
 
             <div>
               <label class="block text-xs font-medium text-slate-300 mb-1">Date of Birth</label>
               <input type="date" id="maleDob" required
-                class="w-full glass-input rounded-lg px-3 py-2.5 text-slate-100 text-sm">
+                class="w-full bg-cosmic-900/80 border border-purple-700/50 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-pink-500 transition">
             </div>
           </div>
 
           <!-- Female Partner Column -->
-          <div class="bg-cosmic-900/40 p-5 rounded-xl border border-pink-500/20 space-y-4">
-            <div class="flex items-center gap-2 border-b border-pink-500/30 pb-2">
-              <span class="text-xl">♀️</span>
-              <h3 class="font-serif font-bold text-pink-300 text-lg">Female Partner</h3>
+          <div class="space-y-4 p-4 rounded-xl bg-purple-950/30 border border-purple-800/30">
+            <div class="flex items-center gap-2 text-amber-300 font-cinzel font-semibold text-lg border-b border-purple-800/40 pb-2">
+              <i class="fa-solid fa-venus text-pink-400"></i>
+              <span>Female Partner</span>
             </div>
-
+            
             <div>
               <label class="block text-xs font-medium text-slate-300 mb-1">Full Name</label>
-              <input type="text" id="femaleName" required placeholder="e.g. Isabella Rose"
-                class="w-full glass-input rounded-lg px-3 py-2.5 text-slate-100 placeholder-slate-500 text-sm">
+              <input type="text" id="femaleName" placeholder="e.g. Isabella Rose" required
+                class="w-full bg-cosmic-900/80 border border-purple-700/50 rounded-lg px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-pink-500 transition">
             </div>
 
             <div>
               <label class="block text-xs font-medium text-slate-300 mb-1">Date of Birth</label>
               <input type="date" id="femaleDob" required
-                class="w-full glass-input rounded-lg px-3 py-2.5 text-slate-100 text-sm">
+                class="w-full bg-cosmic-900/80 border border-purple-700/50 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-pink-500 transition">
             </div>
           </div>
 
         </div>
 
-        <!-- Relationship Inception Date -->
-        <div class="bg-cosmic-900/40 p-5 rounded-xl border border-cosmic-gold/30">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div>
-              <h3 class="font-serif font-bold text-cosmic-gold text-base flex items-center gap-2">
-                <span>💖</span> Relationship Anniversary / Start Date
-              </h3>
-              <p class="text-xs text-slate-400">The day your romantic journey officially began.</p>
+        <!-- Relationship Start Date Input -->
+        <div class="p-4 rounded-xl bg-purple-950/30 border border-purple-800/30 flex flex-col md:flex-row items-center gap-4 justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-amber-300 font-cinzel font-semibold">
+              <i class="fa-solid fa-heart-crack text-pink-500"></i>
+              <span>Relationship Anniversary / Start Date</span>
             </div>
-            <div class="w-full sm:w-64">
-              <input type="date" id="startDate" required
-                class="w-full glass-input rounded-lg px-3 py-2.5 text-slate-100 text-sm">
+            <p class="text-xs text-slate-400">The day your romantic journey officially began.</p>
+          </div>
+          <input type="date" id="startDate" required
+            class="w-full md:w-auto bg-cosmic-900/80 border border-purple-700/50 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-pink-500 transition">
+        </div>
+
+        <!-- Gmail Daily Love Updates Opt-in -->
+        <div class="p-4 rounded-xl bg-gradient-to-r from-purple-900/40 to-pink-900/30 border border-pink-500/30 flex flex-col md:flex-row items-center gap-4 justify-between">
+          <div class="flex items-start gap-3">
+            <div class="p-2 bg-pink-500/20 text-pink-300 rounded-lg mt-0.5">
+              <i class="fa-solid fa-envelope text-lg"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-sm text-amber-200">Receive Daily Love Updates & Horoscopes</h4>
+              <p class="text-xs text-slate-300">Enter your Gmail below to get cosmic predictions and daily compatibility advice sent straight to your inbox.</p>
             </div>
           </div>
+          <input type="email" id="userEmail" placeholder="your.name@gmail.com"
+            class="w-full md:w-64 bg-cosmic-900/90 border border-pink-500/50 rounded-lg px-3.5 py-2 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-pink-400 transition">
         </div>
 
         <!-- Submit Button -->
-        <button type="submit" id="submitBtn" class="w-full py-4 rounded-xl font-serif font-bold text-base sm:text-lg tracking-wider text-cosmic-900 bg-gradient-to-r from-cosmic-gold via-pink-300 to-cosmic-accent hover:brightness-110 transition-all transform hover:-translate-y-0.5 shadow-lg glow-gold flex items-center justify-center gap-2">
-          <span>🔮</span>
+        <button type="submit" id="submitBtn"
+          class="w-full py-4 rounded-xl bg-gradient-to-r from-pink-600 via-purple-600 to-amber-500 hover:from-pink-500 hover:to-amber-400 font-cinzel font-bold text-lg text-white shadow-lg shadow-pink-600/30 hover:shadow-pink-500/50 transition transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-3">
+          <i class="fa-solid fa-crystal-ball text-xl"></i>
           <span>DIVINE OUR FUTURE</span>
-          <span>✨</span>
         </button>
 
       </form>
     </div>
 
-    <!-- Loading Animation (Hidden by default) -->
-    <div id="loadingOverlay" class="hidden my-12 text-center space-y-4">
-      <div class="relative w-24 h-24 mx-auto">
-        <div class="absolute inset-0 rounded-full border-4 border-cosmic-gold/20 animate-ping"></div>
-        <div class="absolute inset-0 rounded-full border-t-4 border-cosmic-gold animate-spin"></div>
-        <div class="absolute inset-2 rounded-full border-r-4 border-cosmic-accent animate-spin-slow"></div>
-        <div class="absolute inset-0 flex items-center justify-center text-2xl">✨</div>
-      </div>
-      <p id="loadingText" class="font-serif text-cosmic-gold text-lg tracking-widest animate-pulse">
-        Consulting the Stars & Numerology...
-      </p>
-    </div>
-
-    <!-- Divination Result Section (Hidden by default) -->
-    <div id="resultCard" class="hidden mt-8 glass-card rounded-2xl p-6 sm:p-10 border-2 border-cosmic-gold/50 glow-gold">
-      
-      <!-- Top Title -->
-      <div class="text-center pb-6 border-b border-cosmic-purple/40">
-        <span class="text-xs uppercase tracking-widest text-cosmic-pink font-semibold">Oracular Reading Complete</span>
-        <h3 id="pairHeader" class="font-serif text-2xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cosmic-gold to-pink-300 mt-1">
-          Alexander & Isabella
-        </h3>
-        <p id="daysTogetherText" class="text-xs sm:text-sm text-cosmic-purple/90 mt-2 font-medium bg-cosmic-800/80 px-4 py-1.5 rounded-full inline-block border border-cosmic-purple/30">
-          Entwined for 0 Days
-        </p>
-      </div>
-
-      <!-- Main Indicators Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-8 text-center">
+    <!-- Divination Result Reveal Card -->
+    <div id="resultCard" class="hidden glass-card rounded-2xl p-6 md:p-8 shadow-2xl border-2 border-amber-400/30 relative">
+      <div class="text-center space-y-4">
         
-        <!-- Score Box -->
-        <div class="bg-cosmic-900/60 p-4 rounded-xl border border-cosmic-gold/30 flex flex-col justify-center">
-          <span class="text-xs text-slate-400 uppercase tracking-wider">Celestial Match</span>
-          <div id="scoreDisplay" class="font-serif text-4xl sm:text-5xl font-black text-cosmic-gold my-1">
-            0%
-          </div>
-          <span id="scoreRating" class="text-xs font-semibold text-pink-400">Soul Connection</span>
+        <div class="inline-block px-4 py-1 rounded-full bg-pink-500/20 border border-pink-500/40 text-pink-300 text-xs font-semibold tracking-wider uppercase">
+          Oracular Reading Complete
         </div>
 
-        <!-- Zodiac Signs Box -->
-        <div class="bg-cosmic-900/60 p-4 rounded-xl border border-cosmic-purple/40 flex flex-col justify-center">
-          <span class="text-xs text-slate-400 uppercase tracking-wider">Astrological Signs</span>
-          <div class="flex items-center justify-center gap-2 my-2 text-sm font-semibold">
-            <span id="maleZodiac" class="text-blue-300">Aries ♈</span>
-            <span class="text-cosmic-gold">✦</span>
-            <span id="femaleZodiac" class="text-pink-300">Libra ♎</span>
-          </div>
-          <span id="zodiacElementMatch" class="text-xs text-slate-400">Fire + Air Harmony</span>
+        <h3 id="coupleTitle" class="font-cinzel text-2xl md:text-4xl font-bold text-amber-200 glow-gold">
+          Name & Name
+        </h3>
+
+        <div id="daysBadge" class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-purple-900/60 text-purple-200 text-xs font-medium border border-purple-700">
+          <i class="fa-solid fa-hourglass-half text-amber-400"></i>
+          <span id="daysCount">Bound Together for 0 Days</span>
         </div>
 
-        <!-- Life Path Numbers Box -->
-        <div class="bg-cosmic-900/60 p-4 rounded-xl border border-cosmic-pink/30 flex flex-col justify-center">
-          <span class="text-xs text-slate-400 uppercase tracking-wider">Life Path Numerology</span>
-          <div class="flex items-center justify-center gap-2 my-2 font-serif text-lg font-bold">
-            <span id="maleNumerology" class="text-blue-300">Path 7</span>
-            <span class="text-cosmic-gold">&</span>
-            <span id="femaleNumerology" class="text-pink-300">Path 3</span>
+        <!-- Grid Results -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6 text-left">
+          
+          <div class="p-4 rounded-xl bg-cosmic-900/80 border border-purple-800/40 text-center">
+            <span class="text-[10px] uppercase tracking-widest text-slate-400 block mb-1">Celestial Match</span>
+            <div id="matchPercentage" class="font-cinzel text-3xl font-extrabold text-pink-400 glow-pink">88%</div>
+            <p id="matchLabel" class="text-xs text-slate-300 font-medium mt-1">Twin Flame Synergy</p>
           </div>
-          <span id="numerologyVibe" class="text-xs text-slate-400">Creative Catalyst</span>
+
+          <div class="p-4 rounded-xl bg-cosmic-900/80 border border-purple-800/40 text-center">
+            <span class="text-[10px] uppercase tracking-widest text-slate-400 block mb-1">Astrological Signs</span>
+            <div id="zodiacSigns" class="text-sm font-semibold text-amber-300 mt-1">Aries & Leo</div>
+            <p id="zodiacElement" class="text-xs text-slate-300 font-medium mt-1">Fire + Fire (High Energy)</p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-cosmic-900/80 border border-purple-800/40 text-center">
+            <span class="text-[10px] uppercase tracking-widest text-slate-400 block mb-1">Life Path Numerology</span>
+            <div id="numerologyPair" class="text-sm font-semibold text-purple-300 mt-1">Path 7 & Path 3</div>
+            <p id="numerologyLabel" class="text-xs text-slate-300 font-medium mt-1">Creative Catalyst</p>
+          </div>
+
+        </div>
+
+        <!-- Prophecy Box -->
+        <div class="p-5 rounded-xl bg-gradient-to-b from-purple-950/60 to-cosmic-900 border border-amber-500/30 text-left space-y-3">
+          <div class="flex items-center gap-2 text-amber-300 font-cinzel text-sm font-bold border-b border-purple-800/60 pb-2">
+            <i class="fa-solid fa-scroll text-amber-400"></i>
+            <span>The Destiny Prophecy</span>
+          </div>
+          <p id="prophecyText" class="text-slate-200 text-sm leading-relaxed italic">
+            "Loading prophecy from the cosmos..."
+          </p>
+        </div>
+
+        <!-- Sync Status Alert -->
+        <div id="syncStatus" class="text-xs text-slate-400 flex items-center justify-center gap-2 pt-2">
+          <!-- Status icon/text inserted dynamically -->
         </div>
 
       </div>
-
-      <!-- Detailed Reading Prose -->
-      <div class="space-y-4 text-slate-200 text-sm sm:text-base leading-relaxed bg-cosmic-900/40 p-6 rounded-xl border border-cosmic-purple/30">
-        <h4 class="font-serif text-lg text-cosmic-gold font-bold flex items-center gap-2">
-          <span>📜</span> The Destiny Prophecy
-        </h4>
-        <p id="prophecyText" class="italic text-slate-300">
-          Loading destiny...
-        </p>
-
-        <div class="pt-4 border-t border-cosmic-purple/30 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <h5 class="font-semibold text-xs text-emerald-400 uppercase tracking-wider">✨ Cosmic Strength</h5>
-            <p id="strengthText" class="text-xs text-slate-300 mt-1">Strength analysis...</p>
-          </div>
-          <div>
-            <h5 class="font-semibold text-xs text-amber-400 uppercase tracking-wider">🔮 Karmic Advice</h5>
-            <p id="karmicText" class="text-xs text-slate-300 mt-1">Karmic guidance...</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Submission Log Status Badge -->
-      <div id="sheetLogStatus" class="mt-6 text-center text-xs py-2 px-4 rounded-lg bg-cosmic-900/80 border border-slate-700 text-slate-400 flex items-center justify-center gap-2">
-        <span id="sheetLogIcon">✨</span>
-        <span id="sheetLogMsg">Your destiny reading is being recorded in the celestial archives.</span>
-      </div>
-
-      <!-- Action Buttons -->
-      <div class="mt-6 flex flex-wrap gap-3 justify-center">
-        <button id="reDivineBtn" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold glass-card hover:bg-cosmic-700 text-cosmic-gold border border-cosmic-gold/30">
-          🔄 Divine Another Pair
-        </button>
-      </div>
-
     </div>
 
   </main>
 
   <!-- Footer -->
-  <footer class="w-full border-t border-cosmic-purple/20 bg-cosmic-900/90 py-4 px-4 text-center text-xs text-slate-500">
-    <p>Celestial Relationship Divination &copy; 2026. Designed for entertainment and romantic insight.</p>
+  <footer class="border-t border-cosmic-border/40 py-6 bg-cosmic-900/40 text-center text-xs text-slate-500">
+    <p>© Celestial Oracle | Relationship Destiny & Compatibility Divination</p>
   </footer>
 
-  <!-- JavaScript Logic -->
+  <!-- Javascript Logic -->
   <script>
-    // ================= HARDCODED GOOGLE SCRIPT URL =================
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwHrWvT2AKfBrJ4-xEtE6ul_mw0ozNe8Nu5k7LMmkd8A44AVgW5XxxQB1a3v7EyG-tYCw/exec';
+    // HARDCODED GOOGLE APPS SCRIPT URL
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwHrWvT2AKfBrJ4-xEtE6ul_mw0ozNe8Nu5k7LMmkd8A44AVgW5XxxQB1a3v7EyG-tYCw/exec";
 
-    const divinationForm = document.getElementById('divinationForm');
-    const loadingOverlay = document.getElementById('loadingOverlay');
-    const resultCard = document.getElementById('resultCard');
-    const reDivineBtn = document.getElementById('reDivineBtn');
-
-    // ================= ASTROLOGY & NUMEROLOGY LOGIC =================
-
+    // Zodiac Calculations
     function getZodiacSign(dateString) {
       const date = new Date(dateString);
-      const month = date.getMonth() + 1;
-      const day = date.getDate() + 1; // standardizing index
+      const day = date.getUTCDate();
+      const month = date.getUTCMonth() + 1;
 
-      if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return { sign: "Aquarius", icon: "♒", element: "Air" };
-      if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) return { sign: "Pisces", icon: "♓", element: "Water" };
-      if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) return { sign: "Aries", icon: "♈", element: "Fire" };
-      if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) return { sign: "Taurus", icon: "♉", element: "Earth" };
-      if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) return { sign: "Gemini", icon: "♊", element: "Air" };
-      if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) return { sign: "Cancer", icon: "♋", element: "Water" };
-      if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) return { sign: "Leo", icon: "♌", element: "Fire" };
-      if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) return { sign: "Virgo", icon: "♍", element: "Earth" };
-      if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) return { sign: "Libra", icon: "♎", element: "Air" };
-      if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) return { sign: "Scorpio", icon: "♏", element: "Water" };
-      if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) return { sign: "Sagittarius", icon: "♐", element: "Fire" };
-      return { sign: "Capricorn", icon: "♑", element: "Earth" };
+      if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return { name: "Aquarius ♒", element: "Air" };
+      if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) return { name: "Pisces ♓", element: "Water" };
+      if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) return { name: "Aries ♈", element: "Fire" };
+      if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) return { name: "Taurus ♉", element: "Earth" };
+      if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) return { name: "Gemini ♊", element: "Air" };
+      if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) return { name: "Cancer ♋", element: "Water" };
+      if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) return { name: "Leo ♌", element: "Fire" };
+      if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) return { name: "Virgo ♍", element: "Earth" };
+      if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) return { name: "Libra ♎", element: "Air" };
+      if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) return { name: "Scorpio ♏", element: "Water" };
+      if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) return { name: "Sagittarius ♐", element: "Fire" };
+      return { name: "Capricorn ♑", element: "Earth" };
     }
 
+    // Numerology Calculation
     function calculateLifePath(dateString) {
-      const digits = dateString.replace(/-/g, '');
+      const clean = dateString.replace(/-/g, '');
       let sum = 0;
-      for (let char of digits) {
+      for (let char of clean) {
         sum += parseInt(char) || 0;
       }
-      while (sum > 9 && sum !== 11 && sum !== 22 && sum !== 33) {
-        sum = sum.toString().split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+      while (sum > 9 && sum !== 11 && sum !== 22) {
+        sum = sum.toString().split('').reduce((acc, digit) => acc + parseInt(digit), 0);
       }
       return sum;
     }
 
-    function calculateNameNumerology(name) {
-      const clean = name.toUpperCase().replace(/[^A-Z]/g, '');
-      let sum = 0;
-      for (let i = 0; i < clean.length; i++) {
-        sum += (clean.charCodeAt(i) - 64);
-      }
-      return sum;
-    }
-
-    // ================= DIVINATION FORM SUBMISSION =================
-
-    divinationForm.addEventListener('submit', function(e) {
+    // Form Submission Event
+    document.getElementById('oracleForm').addEventListener('submit', async function(e) {
       e.preventDefault();
 
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-xl"></i><span>CONSULTING THE STARS...</span>`;
+      submitBtn.disabled = true;
+
+      // Extract Form Inputs
       const maleName = document.getElementById('maleName').value.trim();
       const maleDob = document.getElementById('maleDob').value;
       const femaleName = document.getElementById('femaleName').value.trim();
       const femaleDob = document.getElementById('femaleDob').value;
       const startDate = document.getElementById('startDate').value;
+      const userEmail = document.getElementById('userEmail').value.trim();
 
-      // Show Loading UI
-      divinationForm.parentElement.classList.add('hidden');
-      loadingOverlay.classList.remove('hidden');
-      resultCard.classList.add('hidden');
-
-      setTimeout(() => {
-        // Run Oracle Engine
-        const reading = generateOracleReading(maleName, maleDob, femaleName, femaleDob, startDate);
-        displayResults(reading);
-
-        loadingOverlay.classList.add('hidden');
-        resultCard.classList.remove('hidden');
-
-        // Automatically log to Google Sheet
-        logToGoogleSheet(reading);
-      }, 2200);
-    });
-
-    reDivineBtn.addEventListener('click', () => {
-      resultCard.classList.add('hidden');
-      divinationForm.parentElement.classList.remove('hidden');
-    });
-
-    // ================= ORACLE GENERATOR ENGINE =================
-
-    function generateOracleReading(maleName, maleDob, femaleName, femaleDob, startDate) {
+      // Calculations
       const maleZodiac = getZodiacSign(maleDob);
       const femaleZodiac = getZodiacSign(femaleDob);
 
       const malePath = calculateLifePath(maleDob);
       const femalePath = calculateLifePath(femaleDob);
 
-      const maleVal = calculateNameNumerology(maleName);
-      const femaleVal = calculateNameNumerology(femaleName);
-
-      // Days elapsed calculation
       const startMs = new Date(startDate).getTime();
       const nowMs = new Date().getTime();
-      const diffDays = Math.floor((nowMs - startMs) / (1000 * 60 * 60 * 24));
+      const daysTogether = Math.max(0, Math.floor((nowMs - startMs) / (1000 * 60 * 60 * 24)));
 
-      // Deterministic calculation based on immutable inputs
-      const seed = maleVal + femaleVal + malePath + femalePath + Math.abs(diffDays);
-      const compatibilityScore = 72 + (seed % 27); // Guaranteed high score (72% - 98%) for romantic positivity
+      // Deterministic Match Percentage
+      const charSum = (maleName + femaleName).toLowerCase().split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+      const matchScore = 72 + ((charSum + malePath + femalePath + daysTogether) % 27);
 
-      // Elemental Vibe
-      let elementVibe = `${maleZodiac.element} + ${femaleZodiac.element}`;
-      if (maleZodiac.element === femaleZodiac.element) {
-        elementVibe += " (Double Power)";
-      } else if (
-        (maleZodiac.element === "Fire" && femaleZodiac.element === "Air") ||
-        (maleZodiac.element === "Air" && femaleZodiac.element === "Fire")
-      ) {
-        elementVibe += " (High Passion)";
-      } else if (
-        (maleZodiac.element === "Water" && femaleZodiac.element === "Earth") ||
-        (maleZodiac.element === "Earth" && femaleZodiac.element === "Water")
-      ) {
-        elementVibe += " (Deep Stability)";
-      } else {
-        elementVibe += " (Dynamic Balance)";
-      }
-
-      // Prophecies pool
+      // Prophecy Options
       const prophecies = [
-        `The stars reveal an ethereal link between ${maleName} and ${femaleName}. Your combined numerical signature radiates resilience and creative spark. The alignment on ${startDate} established a destiny matrix where emotional depth continually revitalizes the passion between your two spirits.`,
-        `A soulmate resonance of rare intensity! ${maleName}'s ${maleZodiac.sign} energy acts as a steadfast anchor to ${femaleName}'s ${femaleZodiac.sign} radiance. As the days together increase, unexpected synchronicity and shared dreams will manifest in unexpected ways.`,
-        `Karmic threads run deep between this union. The numerical alignment of Life Paths ${malePath} and ${femalePath} creates an innate understanding that bypasses spoken words. Together, you possess the cosmic power to transform challenges into artistic and personal breakthroughs.`
+        `When ${maleZodiac.name} aligns with ${femaleZodiac.name}, a profound equilibrium is struck. Your relationship is built on mutual admiration and unspoken understanding. As the days unfold, continue prioritizing quiet moments together to weather life's noise.`,
+        `The cosmos reveals a dynamic spark between Path ${malePath} and Path ${femalePath}. You inspire each other to scale new heights. Expect upcoming shared milestones that will permanently anchor your souls in mutual harmony.`,
+        `A rare twin flame resonance! Your bond's inception date aligns perfectly with your natal charts. Through emotional honesty and unconditional support, your unity will serve as a beacon of joy for all around you.`
       ];
+      const selectedProphecy = prophecies[charSum % prophecies.length];
 
-      const strengths = [
-        "Uncanny intuitive communication and instinctive emotional protection for one another.",
-        "Shared creative ambition paired with an adventurous, playful mutual curiosity.",
-        "A profound grounding energy that calms storminess and promotes long-term emotional trust."
-      ];
+      // Update UI Result Card
+      document.getElementById('coupleTitle').textContent = `${maleName} & ${femaleName}`;
+      document.getElementById('daysCount').textContent = `Bound Together for ${daysTogether.toLocaleString()} Mystical Days`;
+      document.getElementById('matchPercentage').textContent = `${matchScore}%`;
+      document.getElementById('zodiacSigns').textContent = `${maleZodiac.name} & ${femaleZodiac.name}`;
+      document.getElementById('zodiacElement').textContent = `${maleZodiac.element} + ${femaleZodiac.element} Harmony`;
+      document.getElementById('numerologyPair').textContent = `Path ${malePath} & Path ${femalePath}`;
+      document.getElementById('prophecyText').textContent = `"${selectedProphecy}"`;
 
-      const karmics = [
-        "Nurture spontaneous quality time together. Never let routine dim the celestial spark.",
-        "Practice open expression during full moons; cosmic energy heightens your empathy then.",
-        "Celebrate small relationship milestones to reinforce your protective energetic aura."
-      ];
+      // Show Result Card
+      const resultCard = document.getElementById('resultCard');
+      resultCard.classList.remove('hidden');
+      resultCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-      return {
+      // Reset Submit Button
+      submitBtn.innerHTML = `<i class="fa-solid fa-crystal-ball text-xl"></i><span>DIVINE OUR FUTURE</span>`;
+      submitBtn.disabled = false;
+
+      // Automatically Send Payload to Google Sheet
+      const syncStatus = document.getElementById('syncStatus');
+      syncStatus.innerHTML = `<i class="fa-solid fa-cloud-arrow-up text-pink-400"></i> Sending to Google Sheet...`;
+
+      const payload = {
         maleName,
         maleDob,
         femaleName,
         femaleDob,
         startDate,
-        daysTogether: diffDays,
-        score: compatibilityScore,
-        maleZodiac,
-        femaleZodiac,
-        malePath,
-        femalePath,
-        elementVibe,
-        prophecy: prophecies[seed % prophecies.length],
-        strength: strengths[seed % strengths.length],
-        karmic: karmics[seed % karmics.length]
-      };
-    }
-
-    // Render results to DOM
-    function displayResults(data) {
-      document.getElementById('pairHeader').textContent = `${data.maleName} & ${data.femaleName}`;
-      
-      const daysText = data.daysTogether >= 0 
-        ? `Bound Together for ${data.daysTogether.toLocaleString()} Mystical Days` 
-        : `Cosmic Bond Commencing on ${data.startDate}`;
-      document.getElementById('daysTogetherText').textContent = daysText;
-
-      document.getElementById('scoreDisplay').textContent = `${data.score}%`;
-      
-      let rating = "Twin Flame Synergy";
-      if (data.score > 90) rating = "Cosmic Soulmates ✨";
-      else if (data.score > 80) rating = "Ethereal Harmony 💖";
-      document.getElementById('scoreRating').textContent = rating;
-
-      document.getElementById('maleZodiac').textContent = `${data.maleZodiac.sign} ${data.maleZodiac.icon}`;
-      document.getElementById('femaleZodiac').textContent = `${data.femaleZodiac.sign} ${data.femaleZodiac.icon}`;
-      document.getElementById('zodiacElementMatch').textContent = data.elementVibe;
-
-      document.getElementById('maleNumerology').textContent = `Path ${data.malePath}`;
-      document.getElementById('femaleNumerology').textContent = `Path ${data.femalePath}`;
-
-      document.getElementById('prophecyText').textContent = `"${data.prophecy}"`;
-      document.getElementById('strengthText').textContent = data.strength;
-      document.getElementById('karmicText').textContent = data.karmic;
-    }
-
-    // ================= LOG TO GOOGLE SHEETS VIA FETCH =================
-
-    function logToGoogleSheet(data) {
-      updateLogStatusBadge('loading', "Recording destiny in the celestial archives...");
-
-      const payload = {
-        maleName: data.maleName,
-        maleDob: data.maleDob,
-        femaleName: data.femaleName,
-        femaleDob: data.femaleDob,
-        startDate: data.startDate,
-        score: `${data.score}%`,
-        zodiacPair: `${data.maleZodiac.sign} + ${data.femaleZodiac.sign}`
+        userEmail,
+        matchScore,
+        zodiacMatch: `${maleZodiac.name} + ${femaleZodiac.name}`
       };
 
-      fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors', // Standard cross-origin setting for Google Apps Script Web Apps
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      })
-      .then(() => {
-        updateLogStatusBadge('success', "Your bond and reading have been permanently archived!");
-      })
-      .catch((error) => {
-        console.error('Error logging to sheet:', error);
-        updateLogStatusBadge('error', "Reading complete. Note: Unable to reach destination archives.");
-      });
-    }
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
 
-    function updateLogStatusBadge(type, message) {
-      const badge = document.getElementById('sheetLogStatus');
-      const icon = document.getElementById('sheetLogIcon');
-      const msg = document.getElementById('sheetLogMsg');
-
-      msg.textContent = message;
-
-      if (type === 'loading') {
-        icon.textContent = "⏳";
-        badge.className = "mt-6 text-center text-xs py-2 px-4 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300 flex items-center justify-center gap-2";
-      } else if (type === 'success') {
-        icon.textContent = "✨";
-        badge.className = "mt-6 text-center text-xs py-2 px-4 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 flex items-center justify-center gap-2";
-      } else if (type === 'error') {
-        icon.textContent = "⚠️";
-        badge.className = "mt-6 text-center text-xs py-2 px-4 rounded-lg bg-rose-500/10 border border-rose-500/30 text-rose-300 flex items-center justify-center gap-2";
+        syncStatus.innerHTML = `<i class="fa-solid fa-check-circle text-emerald-400"></i> Recorded to Google Sheet successfully!`;
+      } catch (err) {
+        console.error("Sheet Logging Error:", err);
+        syncStatus.innerHTML = `<i class="fa-solid fa-circle-exclamation text-amber-400"></i> Divination complete (Sheet sync failed).`;
       }
-    }
+    });
   </script>
 </body>
 </html>
