@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celestial Love Oracle & Relationship Divination</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Cinzel', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            cosmic: {
+              900: '#0b071a',
+              800: '#160d33',
+              700: '#261552',
+              600: '#3c1d7a',
+              accent: '#f43f5e',
+              gold: '#fbbf24',
+              pink: '#ec4899',
+              purple: '#a855f7'
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'spin-slow': 'spin 12s linear infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom Scrollbars & Glassmorphic Utilities */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0b071a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3c1d7a;
+      border-radius: 4px;
+    }
+    .glass-card {
+      background: rgba(22, 13, 51, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(251, 191, 36, 0.2);
+    }
+    .glass-input {
+      background: rgba(11, 7, 26, 0.6);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+    }
+    .glass-input:focus {
+      border-color: #fbbf24;
+      box-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
+      outline: none;
+    }
+    .glow-gold {
+      box-shadow: 0 0 25px rgba(251, 191, 36, 0.35);
+    }
+    .glow-pink {
+      box-shadow: 0 0 25px rgba(244, 63, 94, 0.35);
+    }
+    /* Starfield background pattern */
+    .star-bg {
+      background-image: 
+        radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #ec4899, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 90px 40px, #fbbf24, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 230px 190px, #a855f7, rgba(0,0,0,0));
+      background-repeat: repeat;
+      background-size: 300px 300px;
+    }
+  </style>
+</head>
+<body class="bg-cosmic-900 text-slate-100 font-sans min-h-screen flex flex-col justify-between star-bg relative overflow-x-hidden">
+
+  <!-- Background Decorative Orbs -->
+  <div class="fixed top-10 left-10 w-72 h-72 bg-cosmic-purple/20 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
+  <div class="fixed bottom-10 right-10 w-96 h-96 bg-cosmic-accent/20 rounded-full blur-3xl pointer-events-none animate-pulse-slow"></div>
+
+  <!-- Top Navigation Header -->
+  <header class="w-full border-b border-cosmic-purple/30 bg-cosmic-900/80 backdrop-blur-md sticky top-0 z-40 px-4 py-3 sm:px-8">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-cosmic-accent to-cosmic-gold flex items-center justify-center text-xl shadow-lg glow-gold">
+          🔮
+        </div>
+        <div>
+          <h1 class="font-serif font-bold text-lg sm:text-xl text-transparent bg-clip-text bg-gradient-to-r from-cosmic-gold via-pink-300 to-cosmic-accent tracking-wider">
+            CELESTIAL ORACLE
+          </h1>
+          <p class="text-xs text-cosmic-purple/80 hidden sm:block">Relationship & Soulmate Destiny Divination</p>
+        </div>
+      </div>
+
+      <!-- Google Sheets Config Trigger -->
+      <button id="openSheetModalBtn" class="flex items-center gap-2 px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold glass-card hover:bg-cosmic-700/80 transition border border-cosmic-gold/30 text-cosmic-gold">
+        <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/>
+        </svg>
+        <span id="sheetStatusText">Connect Sheet</span>
+        <span id="statusIndicator" class="w-2 h-2 rounded-full bg-red-400 inline-block"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="max-w-4xl w-full mx-auto p-4 sm:p-6 my-6 flex-grow">
+
+    <!-- Intro Header -->
+    <div class="text-center mb-8 animate-float">
+      <span class="text-xs font-bold tracking-widest text-cosmic-gold uppercase bg-cosmic-700/50 px-3 py-1 rounded-full border border-cosmic-gold/30">
+        ✨ Ancient Numerology & Astrology
+      </span>
+      <h2 class="font-serif text-3xl sm:text-5xl font-extrabold mt-3 text-white tracking-wide">
+        Unveil Your Relationship's Destiny
+      </h2>
+      <p class="text-slate-300 text-sm sm:text-base max-w-lg mx-auto mt-2">
+        Enter both soulmate birth details and your bond's inception date to calculate cosmic alignment, natal compatibility, and future prophecy.
+      </p>
+    </div>
+
+    <!-- Divination Input Form Card -->
+    <div class="glass-card rounded-2xl p-6 sm:p-8 shadow-2xl relative border border-cosmic-purple/40">
+      <form id="divinationForm" class="space-y-6">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- Male Partner Column -->
+          <div class="bg-cosmic-900/40 p-5 rounded-xl border border-blue-500/20 space-y-4">
+            <div class="flex items-center gap-2 border-b border-blue-500/30 pb-2">
+              <span class="text-xl">♂️</span>
+              <h3 class="font-serif font-bold text-blue-300 text-lg">Male Partner</h3>
+            </div>
+            
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1">Full Name</label>
+              <input type="text" id="maleName" required placeholder="e.g. Alexander Vance"
+                class="w-full glass-input rounded-lg px-3 py-2.5 text-slate-100 placeholder-slate-500 text-sm">
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1">Date of Birth</label>
+              <input type="date" id="maleDob" required
+                class="w-full glass-input rounded-lg px-3 py-2.5 text-slate-100 text-sm">
+            </div>
+          </div>
+
+          <!-- Female Partner Column -->
+          <div class="bg-cosmic-900/40 p-5 rounded-xl border border-pink-500/20 space-y-4">
+            <div class="flex items-center gap-2 border-b border-pink-500/30 pb-2">
+              <span class="text-xl">♀️</span>
+              <h3 class="font-serif font-bold text-pink-300 text-lg">Female Partner</h3>
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1">Full Name</label>
+              <input type="text" id="femaleName" required placeholder="e.g. Isabella Rose"
+                class="w-full glass-input rounded-lg px-3 py-2.5 text-slate-100 placeholder-slate-500 text-sm">
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1">Date of Birth</label>
+              <input type="date" id="femaleDob" required
+                class="w-full glass-input rounded-lg px-3 py-2.5 text-slate-100 text-sm">
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Relationship Inception Date -->
+        <div class="bg-cosmic-900/40 p-5 rounded-xl border border-cosmic-gold/30">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h3 class="font-serif font-bold text-cosmic-gold text-base flex items-center gap-2">
+                <span>💖</span> Relationship Anniversary / Start Date
+              </h3>
+              <p class="text-xs text-slate-400">The day your romantic journey officially began.</p>
+            </div>
+            <div class="w-full sm:w-64">
+              <input type="date" id="startDate" required
+                class="w-full glass-input rounded-lg px-3 py-2.5 text-slate-100 text-sm">
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="submitBtn" class="w-full py-4 rounded-xl font-serif font-bold text-base sm:text-lg tracking-wider text-cosmic-900 bg-gradient-to-r from-cosmic-gold via-pink-300 to-cosmic-accent hover:brightness-110 transition-all transform hover:-translate-y-0.5 shadow-lg glow-gold flex items-center justify-center gap-2">
+          <span>🔮</span>
+          <span>DIVINE OUR FUTURE</span>
+          <span>✨</span>
+        </button>
+
+      </form>
+    </div>
+
+    <!-- Loading Animation (Hidden by default) -->
+    <div id="loadingOverlay" class="hidden my-12 text-center space-y-4">
+      <div class="relative w-24 h-24 mx-auto">
+        <div class="absolute inset-0 rounded-full border-4 border-cosmic-gold/20 animate-ping"></div>
+        <div class="absolute inset-0 rounded-full border-t-4 border-cosmic-gold animate-spin"></div>
+        <div class="absolute inset-2 rounded-full border-r-4 border-cosmic-accent animate-spin-slow"></div>
+        <div class="absolute inset-0 flex items-center justify-center text-2xl">✨</div>
+      </div>
+      <p id="loadingText" class="font-serif text-cosmic-gold text-lg tracking-widest animate-pulse">
+        Consulting the Stars & Numerology...
+      </p>
+    </div>
+
+    <!-- Divination Result Section (Hidden by default) -->
+    <div id="resultCard" class="hidden mt-8 glass-card rounded-2xl p-6 sm:p-10 border-2 border-cosmic-gold/50 glow-gold">
+      
+      <!-- Top Title -->
+      <div class="text-center pb-6 border-b border-cosmic-purple/40">
+        <span class="text-xs uppercase tracking-widest text-cosmic-pink font-semibold">Oracular Reading Complete</span>
+        <h3 id="pairHeader" class="font-serif text-2xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cosmic-gold to-pink-300 mt-1">
+          Alexander & Isabella
+        </h3>
+        <p id="daysTogetherText" class="text-xs sm:text-sm text-cosmic-purple/90 mt-2 font-medium bg-cosmic-800/80 px-4 py-1.5 rounded-full inline-block border border-cosmic-purple/30">
+          Entwined for 0 Days
+        </p>
+      </div>
+
+      <!-- Main Indicators Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-8 text-center">
+        
+        <!-- Score Box -->
+        <div class="bg-cosmic-900/60 p-4 rounded-xl border border-cosmic-gold/30 flex flex-col justify-center">
+          <span class="text-xs text-slate-400 uppercase tracking-wider">Celestial Match</span>
+          <div id="scoreDisplay" class="font-serif text-4xl sm:text-5xl font-black text-cosmic-gold my-1">
+            0%
+          </div>
+          <span id="scoreRating" class="text-xs font-semibold text-pink-400">Soul Connection</span>
+        </div>
+
+        <!-- Zodiac Signs Box -->
+        <div class="bg-cosmic-900/60 p-4 rounded-xl border border-cosmic-purple/40 flex flex-col justify-center">
+          <span class="text-xs text-slate-400 uppercase tracking-wider">Astrological Signs</span>
+          <div class="flex items-center justify-center gap-2 my-2 text-sm font-semibold">
+            <span id="maleZodiac" class="text-blue-300">Aries ♈</span>
+            <span class="text-cosmic-gold">✦</span>
+            <span id="femaleZodiac" class="text-pink-300">Libra ♎</span>
+          </div>
+          <span id="zodiacElementMatch" class="text-xs text-slate-400">Fire + Air Harmony</span>
+        </div>
+
+        <!-- Life Path Numbers Box -->
+        <div class="bg-cosmic-900/60 p-4 rounded-xl border border-cosmic-pink/30 flex flex-col justify-center">
+          <span class="text-xs text-slate-400 uppercase tracking-wider">Life Path Numerology</span>
+          <div class="flex items-center justify-center gap-2 my-2 font-serif text-lg font-bold">
+            <span id="maleNumerology" class="text-blue-300">Path 7</span>
+            <span class="text-cosmic-gold">&</span>
+            <span id="femaleNumerology" class="text-pink-300">Path 3</span>
+          </div>
+          <span id="numerologyVibe" class="text-xs text-slate-400">Creative Catalyst</span>
+        </div>
+
+      </div>
+
+      <!-- Detailed Reading Prose -->
+      <div class="space-y-4 text-slate-200 text-sm sm:text-base leading-relaxed bg-cosmic-900/40 p-6 rounded-xl border border-cosmic-purple/30">
+        <h4 class="font-serif text-lg text-cosmic-gold font-bold flex items-center gap-2">
+          <span>📜</span> The Destiny Prophecy
+        </h4>
+        <p id="prophecyText" class="italic text-slate-300">
+          Loading destiny...
+        </p>
+
+        <div class="pt-4 border-t border-cosmic-purple/30 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <h5 class="font-semibold text-xs text-emerald-400 uppercase tracking-wider">✨ Cosmic Strength</h5>
+            <p id="strengthText" class="text-xs text-slate-300 mt-1">Strength analysis...</p>
+          </div>
+          <div>
+            <h5 class="font-semibold text-xs text-amber-400 uppercase tracking-wider">🔮 Karmic Advice</h5>
+            <p id="karmicText" class="text-xs text-slate-300 mt-1">Karmic guidance...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Google Sheet Submission Status Badge -->
+      <div id="sheetLogStatus" class="mt-6 text-center text-xs py-2 px-4 rounded-lg bg-cosmic-900/80 border border-slate-700 text-slate-400 flex items-center justify-center gap-2">
+        <span id="sheetLogIcon">ℹ️</span>
+        <span id="sheetLogMsg">Google Sheets integration not active. Click 'Connect Sheet' to enable automatic saving.</span>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="mt-6 flex flex-wrap gap-3 justify-center">
+        <button id="reDivineBtn" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold glass-card hover:bg-cosmic-700 text-cosmic-gold border border-cosmic-gold/30">
+          🔄 Divine Another Pair
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full border-t border-cosmic-purple/20 bg-cosmic-900/90 py-4 px-4 text-center text-xs text-slate-500">
+    <p>Celestial Relationship Divination &copy; 2026. Designed for entertainment and romantic insight.</p>
+  </footer>
+
+  <!-- ================= GOOGLE APPS SCRIPT SETTINGS MODAL ================= -->
+  <div id="sheetModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="glass-card max-w-2xl w-full rounded-2xl p-6 sm:p-8 border border-cosmic-gold/40 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      
+      <!-- Close Button -->
+      <button id="closeSheetModalBtn" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl p-1">
+        ✕
+      </button>
+
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-xl">
+          📊
+        </div>
+        <div>
+          <h3 class="font-serif font-bold text-lg text-emerald-300">Google Sheets Integration Setup</h3>
+          <p class="text-xs text-slate-400">Automatically store every submitted divination in your personal Google Sheet</p>
+        </div>
+      </div>
+
+      <!-- Step-by-Step Instructions -->
+      <div class="space-y-4 text-xs text-slate-300 bg-cosmic-900/60 p-4 rounded-xl border border-cosmic-purple/30 mb-6">
+        <h4 class="font-semibold text-cosmic-gold text-sm">Step-by-Step Instructions:</h4>
+        <ol class="list-decimal pl-4 space-y-2 leading-relaxed">
+          <li>Create a new <strong>Google Sheet</strong> in your Google Drive.</li>
+          <li>In the sheet, click <strong>Extensions ➔ Apps Script</strong>.</li>
+          <li>Delete any code in the Apps Script editor and paste the snippet below:</li>
+        </ol>
+
+        <!-- Code Block -->
+        <div class="relative">
+          <pre class="bg-black/80 p-3 rounded-lg text-[11px] font-mono text-emerald-400 overflow-x-auto border border-slate-700"><code>function doPost(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var data = JSON.parse(e.postData.contents);
+    
+    // Append headers if row 1 is empty
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow(["Timestamp", "Male Name", "Male DOB", "Female Name", "Female DOB", "Start Date", "Match Score %", "Zodiac Pair"]);
+    }
+    
+    sheet.appendRow([
+      new Date(),
+      data.maleName || '',
+      data.maleDob || '',
+      data.femaleName || '',
+      data.femaleDob || '',
+      data.startDate || '',
+      data.score || '',
+      data.zodiacPair || ''
+    ]);
+    
+    return ContentService.createTextOutput(JSON.stringify({"result": "success"}))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    return ContentService.createTextOutput(JSON.stringify({"result": "error", "error": err.toString()}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}</code></pre>
+          <button id="copyScriptBtn" class="absolute top-2 right-2 px-2 py-1 bg-cosmic-700 hover:bg-cosmic-600 text-xs text-cosmic-gold rounded border border-cosmic-gold/30">
+            Copy Code
+          </button>
+        </div>
+
+        <ol start="4" class="list-decimal pl-4 space-y-2 leading-relaxed">
+          <li>Click <strong>Deploy ➔ New deployment</strong> in Apps Script.</li>
+          <li>Select type: <strong>Web app</strong>. Execute as: <strong>Me</strong>. Who has access: <strong>Anyone</strong>.</li>
+          <li>Click <strong>Deploy</strong>, grant permissions, copy the <strong>Web App URL</strong>, and paste it below!</li>
+        </ol>
+      </div>
+
+      <!-- Webhook Input Form -->
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-cosmic-gold mb-1">Google Apps Script Web App URL</label>
+          <input type="url" id="scriptUrlInput" placeholder="https://script.google.com/macros/s/.../exec"
+            class="w-full glass-input rounded-xl px-3 py-2.5 text-xs sm:text-sm text-slate-100 placeholder-slate-600">
+        </div>
+
+        <div class="flex items-center justify-between gap-3 pt-2">
+          <button id="clearScriptUrlBtn" class="px-4 py-2 rounded-xl text-xs font-semibold text-rose-400 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30">
+            Disconnect Sheet
+          </button>
+          <button id="saveScriptUrlBtn" class="px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-500 hover:bg-emerald-400 text-cosmic-900 shadow-lg font-bold">
+            Save Webhook Settings
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // ================= GLOBAL STATE & STORAGE =================
+    const STORAGE_KEY = 'love_oracle_script_url';
+    let googleScriptUrl = localStorage.getItem(STORAGE_KEY) || '';
+
+    // Elements
+    const openSheetModalBtn = document.getElementById('openSheetModalBtn');
+    const closeSheetModalBtn = document.getElementById('closeSheetModalBtn');
+    const sheetModal = document.getElementById('sheetModal');
+    const scriptUrlInput = document.getElementById('scriptUrlInput');
+    const saveScriptUrlBtn = document.getElementById('saveScriptUrlBtn');
+    const clearScriptUrlBtn = document.getElementById('clearScriptUrlBtn');
+    const sheetStatusText = document.getElementById('sheetStatusText');
+    const statusIndicator = document.getElementById('statusIndicator');
+    const copyScriptBtn = document.getElementById('copyScriptBtn');
+
+    const divinationForm = document.getElementById('divinationForm');
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    const resultCard = document.getElementById('resultCard');
+    const reDivineBtn = document.getElementById('reDivineBtn');
+
+    // Setup Initial UI state for Webhook
+    updateWebhookStatusUI();
+
+    // Modal Control
+    openSheetModalBtn.addEventListener('click', () => {
+      scriptUrlInput.value = googleScriptUrl;
+      sheetModal.classList.remove('hidden');
+    });
+
+    closeSheetModalBtn.addEventListener('click', () => {
+      sheetModal.classList.add('hidden');
+    });
+
+    // Save Webhook URL
+    saveScriptUrlBtn.addEventListener('click', () => {
+      const url = scriptUrlInput.value.trim();
+      if (url && !url.startsWith('https://script.google.com')) {
+        alert('https://script.google.com/macros/s/AKfycbx9E44fFpAs4wYCO4BbAWZqkDfyv1es9rwlMTP81fmqtwod1MY74Sjh_vVZFAlm9pmcDg/exec');
+        return;
+      }
+      googleScriptUrl = url;
+      localStorage.setItem(STORAGE_KEY, googleScriptUrl);
+      updateWebhookStatusUI();
+      sheetModal.classList.add('hidden');
+    });
+
+    // Clear Webhook URL
+    clearScriptUrlBtn.addEventListener('click', () => {
+      googleScriptUrl = '';
+      localStorage.removeItem(STORAGE_KEY);
+      scriptUrlInput.value = '';
+      updateWebhookStatusUI();
+      sheetModal.classList.add('hidden');
+    });
+
+    // Copy Apps Script snippet helper
+    copyScriptBtn.addEventListener('click', () => {
+      const code = `function doPost(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var data = JSON.parse(e.postData.contents);
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow(["Timestamp", "Male Name", "Male DOB", "Female Name", "Female DOB", "Start Date", "Match Score %", "Zodiac Pair"]);
+    }
+    sheet.appendRow([
+      new Date(),
+      data.maleName || '',
+      data.maleDob || '',
+      data.femaleName || '',
+      data.femaleDob || '',
+      data.startDate || '',
+      data.score || '',
+      data.zodiacPair || ''
+    ]);
+    return ContentService.createTextOutput(JSON.stringify({"result": "success"}))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    return ContentService.createTextOutput(JSON.stringify({"result": "error", "error": err.toString()}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}`;
+      navigator.clipboard.writeText(code).then(() => {
+        copyScriptBtn.textContent = 'Copied!';
+        setTimeout(() => copyScriptBtn.textContent = 'Copy Code', 2000);
+      });
+    });
+
+    function updateWebhookStatusUI() {
+      if (googleScriptUrl) {
+        sheetStatusText.textContent = 'Sheet Connected';
+        statusIndicator.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse';
+      } else {
+        sheetStatusText.textContent = 'Connect Sheet';
+        statusIndicator.className = 'w-2.5 h-2.5 rounded-full bg-rose-400';
+      }
+    }
+
+    // ================= ASTROLOGY & NUMEROLOGY LOGIC =================
+
+    function getZodiacSign(dateString) {
+      const date = new Date(dateString);
+      const month = date.getMonth() + 1;
+      const day = date.getDate() + 1; // standardizing index
+
+      if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return { sign: "Aquarius", icon: "♒", element: "Air" };
+      if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) return { sign: "Pisces", icon: "♓", element: "Water" };
+      if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) return { sign: "Aries", icon: "♈", element: "Fire" };
+      if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) return { sign: "Taurus", icon: "♉", element: "Earth" };
+      if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) return { sign: "Gemini", icon: "♊", element: "Air" };
+      if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) return { sign: "Cancer", icon: "♋", element: "Water" };
+      if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) return { sign: "Leo", icon: "♌", element: "Fire" };
+      if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) return { sign: "Virgo", icon: "♍", element: "Earth" };
+      if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) return { sign: "Libra", icon: "♎", element: "Air" };
+      if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) return { sign: "Scorpio", icon: "♏", element: "Water" };
+      if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) return { sign: "Sagittarius", icon: "♐", element: "Fire" };
+      return { sign: "Capricorn", icon: "♑", element: "Earth" };
+    }
+
+    function calculateLifePath(dateString) {
+      const digits = dateString.replace(/-/g, '');
+      let sum = 0;
+      for (let char of digits) {
+        sum += parseInt(char) || 0;
+      }
+      while (sum > 9 && sum !== 11 && sum !== 22 && sum !== 33) {
+        sum = sum.toString().split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+      }
+      return sum;
+    }
+
+    function calculateNameNumerology(name) {
+      const clean = name.toUpperCase().replace(/[^A-Z]/g, '');
+      let sum = 0;
+      for (let i = 0; i < clean.length; i++) {
+        sum += (clean.charCodeAt(i) - 64);
+      }
+      return sum;
+    }
+
+    // ================= DIVINATION FORM SUBMISSION =================
+
+    divinationForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const maleName = document.getElementById('maleName').value.trim();
+      const maleDob = document.getElementById('maleDob').value;
+      const femaleName = document.getElementById('femaleName').value.trim();
+      const femaleDob = document.getElementById('femaleDob').value;
+      const startDate = document.getElementById('startDate').value;
+
+      // Show Loading UI
+      divinationForm.parentElement.classList.add('hidden');
+      loadingOverlay.classList.remove('hidden');
+      resultCard.classList.add('hidden');
+
+      setTimeout(() => {
+        // Run Oracle Engine
+        const reading = generateOracleReading(maleName, maleDob, femaleName, femaleDob, startDate);
+        displayResults(reading);
+
+        loadingOverlay.classList.add('hidden');
+        resultCard.classList.remove('hidden');
+
+        // Log to Google Sheet if connected
+        if (googleScriptUrl) {
+          logToGoogleSheet(reading);
+        } else {
+          updateLogStatusBadge('info', "Google Sheet not connected. Form shown locally.");
+        }
+      }, 2200);
+    });
+
+    reDivineBtn.addEventListener('click', () => {
+      resultCard.classList.add('hidden');
+      divinationForm.parentElement.classList.remove('hidden');
+    });
+
+    // ================= ORACLE GENERATOR ENGINE =================
+
+    function generateOracleReading(maleName, maleDob, femaleName, femaleDob, startDate) {
+      const maleZodiac = getZodiacSign(maleDob);
+      const femaleZodiac = getZodiacSign(femaleDob);
+
+      const malePath = calculateLifePath(maleDob);
+      const femalePath = calculateLifePath(femaleDob);
+
+      const maleVal = calculateNameNumerology(maleName);
+      const femaleVal = calculateNameNumerology(femaleName);
+
+      // Days elapsed calculation
+      const startMs = new Date(startDate).getTime();
+      const nowMs = new Date().getTime();
+      const diffDays = Math.floor((nowMs - startMs) / (1000 * 60 * 60 * 24));
+
+      // Deterministic calculation based on immutable inputs
+      const seed = maleVal + femaleVal + malePath + femalePath + Math.abs(diffDays);
+      const compatibilityScore = 72 + (seed % 27); // Guaranteed high score (72% - 98%) for romantic positivity
+
+      // Elemental Vibe
+      let elementVibe = `${maleZodiac.element} + ${femaleZodiac.element}`;
+      if (maleZodiac.element === femaleZodiac.element) {
+        elementVibe += " (Double Power)";
+      } else if (
+        (maleZodiac.element === "Fire" && femaleZodiac.element === "Air") ||
+        (maleZodiac.element === "Air" && femaleZodiac.element === "Fire")
+      ) {
+        elementVibe += " (High Passion)";
+      } else if (
+        (maleZodiac.element === "Water" && femaleZodiac.element === "Earth") ||
+        (maleZodiac.element === "Earth" && femaleZodiac.element === "Water")
+      ) {
+        elementVibe += " (Deep Stability)";
+      } else {
+        elementVibe += " (Dynamic Balance)";
+      }
+
+      // Prophecies pool
+      const prophecies = [
+        `The stars reveal an ethereal link between ${maleName} and ${femaleName}. Your combined numerical signature radiates resilience and creative spark. The alignment on ${startDate} established a destiny matrix where emotional depth continually revitalizes the passion between your two spirits.`,
+        `A soulmate resonance of rare intensity! ${maleName}'s ${maleZodiac.sign} energy acts as a steadfast anchor to ${femaleName}'s ${femaleZodiac.sign} radiance. As the days together increase, unexpected synchronicity and shared dreams will manifest in unexpected ways.`,
+        `Karmic threads run deep between this union. The numerical alignment of Life Paths ${malePath} and ${femalePath} creates an innate understanding that bypasses spoken words. Together, you possess the cosmic power to transform challenges into artistic and personal breakthroughs.`
+      ];
+
+      const strengths = [
+        "Uncanny intuitive communication and instinctive emotional protection for one another.",
+        "Shared creative ambition paired with an adventurous, playful mutual curiosity.",
+        "A profound grounding energy that calms storminess and promotes long-term emotional trust."
+      ];
+
+      const karmics = [
+        "Nurture spontaneous quality time together. Never let routine dim the celestial spark.",
+        "Practice open expression during full moons; cosmic energy heightens your empathy then.",
+        "Celebrate small relationship milestones to reinforce your protective energetic aura."
+      ];
+
+      return {
+        maleName,
+        maleDob,
+        femaleName,
+        femaleDob,
+        startDate,
+        daysTogether: diffDays,
+        score: compatibilityScore,
+        maleZodiac,
+        femaleZodiac,
+        malePath,
+        femalePath,
+        elementVibe,
+        prophecy: prophecies[seed % prophecies.length],
+        strength: strengths[seed % strengths.length],
+        karmic: karmics[seed % karmics.length]
+      };
+    }
+
+    // Render results to DOM
+    function displayResults(data) {
+      document.getElementById('pairHeader').textContent = `${data.maleName} & ${data.femaleName}`;
+      
+      const daysText = data.daysTogether >= 0 
+        ? `Bound Together for ${data.daysTogether.toLocaleString()} Mystical Days` 
+        : `Cosmic Bond Commencing on ${data.startDate}`;
+      document.getElementById('daysTogetherText').textContent = daysText;
+
+      document.getElementById('scoreDisplay').textContent = `${data.score}%`;
+      
+      let rating = "Twin Flame Synergy";
+      if (data.score > 90) rating = "Cosmic Soulmates ✨";
+      else if (data.score > 80) rating = "Ethereal Harmony 💖";
+      document.getElementById('scoreRating').textContent = rating;
+
+      document.getElementById('maleZodiac').textContent = `${data.maleZodiac.sign} ${data.maleZodiac.icon}`;
+      document.getElementById('femaleZodiac').textContent = `${data.femaleZodiac.sign} ${data.femaleZodiac.icon}`;
+      document.getElementById('zodiacElementMatch').textContent = data.elementVibe;
+
+      document.getElementById('maleNumerology').textContent = `Path ${data.malePath}`;
+      document.getElementById('femaleNumerology').textContent = `Path ${data.femalePath}`;
+
+      document.getElementById('prophecyText').textContent = `"${data.prophecy}"`;
+      document.getElementById('strengthText').textContent = data.strength;
+      document.getElementById('karmicText').textContent = data.karmic;
+    }
+
+    // ================= LOG TO GOOGLE SHEETS VIA FETCH =================
+
+    function logToGoogleSheet(data) {
+      updateLogStatusBadge('loading', "Logging entry to Google Sheet...");
+
+      const payload = {
+        maleName: data.maleName,
+        maleDob: data.maleDob,
+        femaleName: data.femaleName,
+        femaleDob: data.femaleDob,
+        startDate: data.startDate,
+        score: `${data.score}%`,
+        zodiacPair: `${data.maleZodiac.sign} + ${data.femaleZodiac.sign}`
+      };
+
+      fetch(googleScriptUrl, {
+        method: 'POST',
+        mode: 'no-cors', // Standard cross-origin setting for Google Apps Script Web Apps
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(() => {
+        updateLogStatusBadge('success', "Successfully recorded reading to Google Sheet!");
+      })
+      .catch((error) => {
+        console.error('Error logging to sheet:', error);
+        updateLogStatusBadge('error', "Failed to reach Google Sheets webhook endpoint.");
+      });
+    }
+
+    function updateLogStatusBadge(type, message) {
+      const badge = document.getElementById('sheetLogStatus');
+      const icon = document.getElementById('sheetLogIcon');
+      const msg = document.getElementById('sheetLogMsg');
+
+      msg.textContent = message;
+
+      if (type === 'loading') {
+        icon.textContent = "⏳";
+        badge.className = "mt-6 text-center text-xs py-2 px-4 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300 flex items-center justify-center gap-2";
+      } else if (type === 'success') {
+        icon.textContent = "✅";
+        badge.className = "mt-6 text-center text-xs py-2 px-4 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 flex items-center justify-center gap-2";
+      } else if (type === 'error') {
+        icon.textContent = "⚠️";
+        badge.className = "mt-6 text-center text-xs py-2 px-4 rounded-lg bg-rose-500/10 border border-rose-500/30 text-rose-300 flex items-center justify-center gap-2";
+      } else {
+        icon.textContent = "ℹ️";
+        badge.className = "mt-6 text-center text-xs py-2 px-4 rounded-lg bg-cosmic-900/80 border border-slate-700 text-slate-400 flex items-center justify-center gap-2";
+      }
+    }
+  </script>
+</body>
+</html>
