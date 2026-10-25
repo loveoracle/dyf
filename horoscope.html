@@ -78,7 +78,7 @@
           <h1 class="font-cinzel font-bold text-lg md:text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-pink-300 to-purple-200">
             CELESTIAL ORACLE
           </h1>
-          <p class="text-[10px] text-purple-300 tracking-widest uppercase">Daily Horoscope Portal</p>
+          <p class="text-[10px] text-purple-300 tracking-widest uppercase">Mathematical Algorithmic Horoscope</p>
         </div>
       </div>
 
@@ -97,14 +97,14 @@
     <!-- Hero Title -->
     <div class="text-center mb-10">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-900/40 border border-purple-500/30 text-xs font-semibold text-purple-300 mb-3">
-        <i class="fa-solid fa-sun text-amber-300"></i>
-        <span>PERSONAL CELESTIAL ALIGNMENT</span>
+        <i class="fa-solid fa-calculator text-amber-300"></i>
+        <span>PURE MATHEMATICAL ALIGNMENT</span>
       </div>
       <h2 class="font-cinzel text-3xl md:text-5xl font-extrabold text-white tracking-wide mb-3 glow-gold">
-        YOUR DAILY HOROSCOPE
+        ALGORITHMIC HOROSCOPE
       </h2>
       <p class="text-slate-300 text-sm md:text-base max-w-xl mx-auto">
-        Enter your name and birthdate to calculate your personalized daily astrological forecast and cosmic guidance.
+        Enter your name and birthdate. Our mathematical matrix computes your daily celestial indices using arithmetic and calendar coordinates.
       </p>
     </div>
 
@@ -126,15 +126,9 @@
           </div>
         </div>
 
-        <div>
-          <label class="block text-xs font-medium text-amber-300 uppercase tracking-widest mb-1.5">Relationship Anniversary or Special Date (Optional)</label>
-          <input type="date" id="specialDate"
-            class="w-full bg-cosmic-900/90 border border-purple-700/60 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-pink-500 transition">
-        </div>
-
         <button type="submit"
           class="w-full py-3.5 rounded-xl bg-gradient-to-r from-pink-600 via-purple-600 to-amber-500 hover:from-pink-500 hover:to-amber-400 font-cinzel font-bold text-base text-white shadow-lg shadow-pink-600/30 transition transform hover:-translate-y-0.5">
-          <i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Reveal Today's Forecast
+          <i class="fa-solid fa-microchip mr-2"></i> Compute Algorithmic Forecast
         </button>
       </form>
     </div>
@@ -144,7 +138,7 @@
       
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-purple-800/60 pb-4 gap-2">
         <div>
-          <span id="greetingTitle" class="text-[10px] text-purple-300 uppercase tracking-widest block">Personal Horoscope</span>
+          <span id="greetingTitle" class="text-[10px] text-purple-300 uppercase tracking-widest block">Algorithmic Matrix Output</span>
           <h3 id="resultSignTitle" class="font-cinzel text-2xl md:text-3xl font-bold text-amber-200 glow-gold">Zodiac</h3>
         </div>
         <div id="currentDateBadge" class="px-3 py-1 rounded-full bg-purple-900/60 border border-purple-700 text-xs text-purple-200">
@@ -155,7 +149,7 @@
       <!-- Quick Stats Grid -->
       <div class="grid grid-cols-3 gap-3 text-center">
         <div class="p-3 rounded-xl bg-cosmic-900/80 border border-purple-800/40">
-          <span class="text-[10px] uppercase text-slate-400 block">Lucky Color / শুভ রং</span>
+          <span class="text-[10px] uppercase text-slate-400 block">Cosmic Frequency / ফ্রিকোয়েন্সি</span>
           <span id="luckyColor" class="text-xs sm:text-sm font-bold text-pink-400">-</span>
         </div>
         <div class="p-3 rounded-xl bg-cosmic-900/80 border border-purple-800/40">
@@ -163,18 +157,18 @@
           <span id="luckyNumber" class="text-xs sm:text-sm font-bold text-amber-300">-</span>
         </div>
         <div class="p-3 rounded-xl bg-cosmic-900/80 border border-purple-800/40">
-          <span class="text-[10px] uppercase text-slate-400 block">Soulmate / অনুকূল রাশি</span>
+          <span class="text-[10px] uppercase text-slate-400 block">Matrix Index / ম্যাট্রিক্স সূচক</span>
           <span id="soulmateSign" class="text-xs sm:text-sm font-bold text-purple-300">-</span>
         </div>
       </div>
 
-      <!-- Detailed Horoscopes (English + Bengali) -->
+      <!-- Detailed Horoscopes (Pure Math Derived) -->
       <div class="space-y-4">
         
         <!-- Romance Box -->
         <div class="p-4 rounded-xl bg-purple-950/40 border border-purple-800/40 space-y-2">
           <h4 class="font-cinzel text-sm font-bold text-amber-300 flex items-center gap-2">
-            <i class="fa-solid fa-heart text-pink-400"></i> Romance & Relationships / প্রেম ও সম্পর্ক
+            <i class="fa-solid fa-heart text-pink-400"></i> Romance Vector / প্রেম ও সম্পর্ক ভেক্টর
           </h4>
           <p id="loveForecastEn" class="text-slate-100 text-xs sm:text-sm leading-relaxed font-medium">
             -
@@ -188,7 +182,7 @@
         <!-- Energy Box -->
         <div class="p-4 rounded-xl bg-purple-950/40 border border-purple-800/40 space-y-2">
           <h4 class="font-cinzel text-sm font-bold text-amber-300 flex items-center gap-2">
-            <i class="fa-solid fa-star text-amber-400"></i> Cosmic Energy & Fortune / মহাজাগতিক শক্তি ও ভাগ্য
+            <i class="fa-solid fa-bolt text-amber-400"></i> Energy Multiplier / শক্তি ও ভাগ্য গুণক
           </h4>
           <p id="energyForecastEn" class="text-slate-100 text-xs sm:text-sm leading-relaxed font-medium">
             -
@@ -207,7 +201,7 @@
 
   <!-- Footer -->
   <footer class="border-t border-cosmic-border/40 py-6 bg-cosmic-900/40 text-center text-xs text-slate-500">
-    <p>© Celestial Oracle | Daily Astrological Portal</p>
+    <p>© Celestial Oracle | Mathematical Algorithmic Portal</p>
   </footer>
 
   <!-- Horoscope Script Logic -->
@@ -216,27 +210,27 @@
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     document.getElementById('currentDateBadge').textContent = new Date().toLocaleDateString('en-US', options);
 
-    // Zodiac Calculator based on Birthdate
+    // Mathematical Zodiac Calculator
     function getZodiacSign(dateString) {
       const date = new Date(dateString);
       const day = date.getUTCDate();
       const month = date.getUTCMonth() + 1;
 
-      if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) return { name: "Aries (মেষ)", color: "Ruby Red (উজ্জ্বল লাল)", match: "Leo (সিংহ)" };
-      if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) return { name: "Taurus (বৃষ)", color: "Emerald Green (সবুজ)", match: "Virgo (কন্যা)" };
-      if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) return { name: "Gemini (মিথুন)", color: "Bright Yellow (হলুদ)", match: "Libra (তুলা)" };
-      if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) return { name: "Cancer (কর্কট)", color: "Silver (রৌপ্য)", match: "Scorpio (বৃশ্চিক)" };
-      if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) return { name: "Leo (সিংহ)", color: "Golden (সোনালী)", match: "Aries (মেষ)" };
-      if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) return { name: "Virgo (কন্যা)", color: "Navy Blue (নীল)", match: "Taurus (বৃষ)" };
-      if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) return { name: "Libra (তুলা)", color: "Pink (গোলাপি)", match: "Gemini (মিথুন)" };
-      if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) return { name: "Scorpio (বৃশ্চিক)", color: "Crimson (গাঢ় লাল)", match: "Cancer (কর্কট)" };
-      if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) return { name: "Sagittarius (ধনু)", color: "Purple (বেগুনি)", match: "Aquarius (কুম্ভ)" };
-      if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) return { name: "Capricorn (মকর)", color: "Charcoal (ধূসর)", match: "Virgo (কন্যা)" };
-      if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return { name: "Aquarius (কুম্ভ)", color: "Electric Blue (নীল)", match: "Sagittarius (ধনু)" };
-      return { name: "Pisces (মীন)", color: "Seafoam (সামুদ্রিক সবুজ)", match: "Scorpio (বৃশ্চিক)" };
+      if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) return { name: "Aries (মেষ)", code: "AR-01" };
+      if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) return { name: "Taurus (বৃষ)", code: "TA-02" };
+      if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) return { name: "Gemini (মিথুন)", code: "GE-03" };
+      if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) return { name: "Cancer (কর্কট)", code: "CA-04" };
+      if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) return { name: "Leo (সিংহ)", code: "LE-05" };
+      if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) return { name: "Virgo (কন্যা)", code: "VI-06" };
+      if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) return { name: "Libra (তুলা)", code: "LI-07" };
+      if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) return { name: "Scorpio (বৃশ্চিক)", code: "SC-08" };
+      if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) return { name: "Sagittarius (ধনু)", code: "SA-09" };
+      if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) return { name: "Capricorn (মকর)", code: "CP-10" };
+      if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return { name: "Aquarius (কুম্ভ)", code: "AQ-11" };
+      return { name: "Pisces (মীন)", code: "PI-12" };
     }
 
-    // Numerology Calculation from Birthdate
+    // Mathematical Life Path Calculation
     function calculateLifePath(dateString) {
       const clean = dateString.replace(/-/g, '');
       let sum = 0;
@@ -258,48 +252,45 @@
       const zodiac = getZodiacSign(userDob);
       const lifePath = calculateLifePath(userDob);
 
-      const charSum = userName.toLowerCase().split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+      // Pure Mathematical Computations using character codes and today's day coordinate
+      const nameAsciiSum = userName.toLowerCase().split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+      const todayDayNum = new Date().getDate(); // 26
       
-      const loveFortunesEn = [
-        `Dear ${userName}, passionate alignment fills your relationship sector today. Open communication will bring you closer to your soulmate.`,
-        `A wonderful day for ${userName} to express heartfelt emotions. Honesty and warmth will deepen your romantic bond immensely.`,
-        `The cosmos highlights deep emotional resonance today. Cherish quiet, meaningful moments with your special someone.`
-      ];
+      // Mathematical formula variables
+      const harmonicRatio = ((nameAsciiSum * lifePath * todayDayNum) % 97) + 1;
+      const fluxVector = (nameAsciiSum + todayDayNum) % 3;
 
-      const loveFortunesBn = [
-        `প্রিয় ${userName}, আজ আপনার সম্পর্কের ক্ষেত্রে রোমান্টিক আবহ বিরাজ করবে। খোলামেলা কথোপকথন আপনাকে আপনার সঙ্গীর আরও কাছাকাছি নিয়ে আসবে।`,
-        `আজ ${userName}-এর মনের অনুভূতি প্রকাশ করার জন্য দারুণ একটি দিন। সততা ও উষ্ণতা আপনাদের প্রেমের বন্ধনকে আরও গভীর করবে।`,
-        `মহাজাগতিক প্রভাবে আজ গভীর আত্মিক সংযোগ তৈরি হবে। বিশেষ মানুষটির সাথে শান্ত ও অর্থপূর্ণ মুহূর্তগুলো উপভোগ করুন।`
-      ];
+      // Algorithmic English & Bengali generation
+      let loveEn, loveBn, energyEn, energyBn;
 
-      const energyFortunesEn = [
-        `Your Life Path (${lifePath}) indicates high momentum and leadership success today. Channel your focus into completing key goals.`,
-        `Confidence is your greatest asset today. Trust your intuition to navigate upcoming choices with absolute clarity and ease.`,
-        `Maintain mental peace and take time to recharge your energy. Balance and mindfulness will bring remarkable clarity.`
-      ];
-
-      const energyFortunesBn = [
-        `আপনার জীবন সংখ্যা (${lifePath}) অনুযায়ী আজ কর্মক্ষেত্রে উচ্চ উদ্যম ও সফলতার যোগ রয়েছে। আপনার মূল লক্ষ্যগুলোর ওপর মনোযোগ দিন।`,
-        `আত্মবিশ্বাস আজ আপনার সবচেয়ে বড় শক্তি। নিখুঁত স্পষ্টতা ও স্বাচ্ছন্দ্যের সাথে যেকোনো সিদ্ধান্ত নিতে আপনার অন্তর্দৃষ্টিকে ভরসা করুন।`,
-        `মানসিক শান্তি বজায় রাখুন এবং শক্তি পুনর্ভরণের জন্য সময় দিন। ভারসাম্য এবং সচেতনতা আপনার মধ্যে অসাধারণ স্পষ্টতা এনে দেবে।`
-      ];
-
-      const selectedLoveEn = loveFortunesEn[charSum % loveFortunesEn.length];
-      const selectedLoveBn = loveFortunesBn[charSum % loveFortunesBn.length];
-      const selectedEnergyEn = energyFortunesEn[(charSum + lifePath) % energyFortunesEn.length];
-      const selectedEnergyBn = energyFortunesBn[(charSum + lifePath) % energyFortunesBn.length];
+      if (fluxVector === 0) {
+        loveEn = `Calculated Harmonic Index (${harmonicRatio}%): Planetary alignment vector indicates high emotional synchronization for ${userName}. Interpersonal resonance is optimized today.`;
+        loveBn = `গণিত হরমোন সূচক (${harmonicRatio}%): গ্রহের বিন্যাস ভেক্টর ${userName}-এর জন্য উচ্চ আবেগগত সুসংগতির ইঙ্গিত দেয়। পারস্পরিক আকর্ষণ আজ সর্বোচ্চ স্তরে রয়েছে।`;
+        energyEn = `Mathematical velocity factor is positive. Life Path ${lifePath} coordinates suggest optimal timing for executing structural decisions.`;
+        energyBn = `গাণিতিক গতি ফ্যাক্টর ইতিবাচক। জীবন সংখ্যা (${lifePath}) নির্দেশ করে যে গঠনমূলক সিদ্ধান্ত বাস্তবায়নের জন্য এটি উপযুক্ত সময়।`;
+      } else if (fluxVector === 1) {
+        loveEn = `Calculated Harmonic Index (${harmonicRatio}%): Interpersonal gradient for ${userName} points toward cognitive alignment and cooperative dialogue.`;
+        loveBn = `গণিত হরমোন সূচক (${harmonicRatio}%): ${userName}-এর জন্য আন্তঃব্যক্তিক গ্রেডিয়েন্ট গঠনমূলক সংলাপ ও মানসিক মিলের দিকে নির্দেশ করছে।`;
+        energyEn = `Energy multiplier coefficient is stable. Numerical matrix indicates steady progress through analytical problem-solving.`;
+        energyBn = `শক্তি গুণক সহায়ক ও স্থিতিশীল। সংখ্যাগত ম্যাট্রিক্স বিশ্লেষণাত্মক সমস্যার সমাধানের মাধ্যমে ধারাবাহিক অগ্রগতির ইঙ্গিত দিচ্ছে।`;
+      } else {
+        loveEn = `Calculated Harmonic Index (${harmonicRatio}%): Transitory astrological angle favors deep introspection and relational clarity for ${userName}.`;
+        loveBn = `গণিত হরমোন সূচক (${harmonicRatio}%): পরিবর্তনশীল জ্যোতিষশাস্ত্রীয় কোণ ${userName}-এর জন্য আত্মবিশ্লেষণ এবং সম্পর্কের স্পষ্টতাকে অনুকূল করছে।`;
+        energyEn = `Arithmetic flux sequence suggests conserving energetic output. Prioritize focal alignment over multi-tasking.`;
+        energyBn = `অঙ্কভিত্তিক ফ্লাক্স সিকোয়েন্স শক্তি সাশ্রয় করার পরামর্শ দেয়। একসাথে অনেক কাজ না করে একটি নির্দিষ্ট লক্ষ্যের ওপর গুরুত্ব দিন।`;
+      }
 
       // Update UI Result
-      document.getElementById('greetingTitle').textContent = `${userName}'s Personal Horoscope`;
+      document.getElementById('greetingTitle').textContent = `${userName}'s Algorithmic Matrix Output`;
       document.getElementById('resultSignTitle').textContent = zodiac.name;
-      document.getElementById('luckyColor').textContent = zodiac.color;
+      document.getElementById('luckyColor').textContent = (harmonicRatio * 3.14).toFixed(2) + " Hz";
       document.getElementById('luckyNumber').textContent = "Path " + lifePath;
-      document.getElementById('soulmateSign').textContent = zodiac.match;
+      document.getElementById('soulmateSign').textContent = zodiac.code;
       
-      document.getElementById('loveForecastEn').textContent = selectedLoveEn;
-      document.getElementById('loveForecastBn').textContent = selectedLoveBn;
-      document.getElementById('energyForecastEn').textContent = selectedEnergyEn;
-      document.getElementById('energyForecastBn').textContent = selectedEnergyBn;
+      document.getElementById('loveForecastEn').textContent = loveEn;
+      document.getElementById('loveForecastBn').textContent = loveBn;
+      document.getElementById('energyForecastEn').textContent = energyEn;
+      document.getElementById('energyForecastBn').textContent = energyBn;
 
       const resultCard = document.getElementById('horoscopeResult');
       resultCard.classList.remove('hidden');
