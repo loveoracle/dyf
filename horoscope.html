@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Cosmic Horoscope | Celestial Oracle</title>
+  
+  <!-- Heart SVG Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ec4899'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            cosmic: {
+              900: '#0a051b',
+              800: '#130b2e',
+              700: '#1f1245',
+              border: '#3b2575',
+              accent: '#ec4899',
+              gold: '#fbbf24'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #05020c;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.18) 0%, transparent 60%),
+        radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 15% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+    
+    .glass-card {
+      background: rgba(19, 11, 46, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+    }
+
+    .glow-gold {
+      text-shadow: 0 0 12px rgba(251, 191, 36, 0.4);
+    }
+
+    .glow-pink {
+      text-shadow: 0 0 12px rgba(236, 72, 153, 0.5);
+    }
+  </style>
+</head>
+<body class="text-slate-100 font-sans min-h-screen flex flex-col justify-between selection:bg-pink-500 selection:text-white">
+
+  <!-- Header / Navigation -->
+  <header class="border-b border-cosmic-border/50 bg-cosmic-900/60 backdrop-blur-md sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-purple-600 via-pink-500 to-amber-400 p-[1.5px] flex items-center justify-center shadow-lg shadow-pink-500/20">
+          <div class="w-full h-full bg-cosmic-900 rounded-full flex items-center justify-center">
+            <i class="fa-solid fa-heart text-pink-400 text-lg animate-pulse"></i>
+          </div>
+        </div>
+        <div>
+          <h1 class="font-cinzel font-bold text-lg md:text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-pink-300 to-purple-200">
+            CELESTIAL ORACLE
+          </h1>
+          <p class="text-[10px] text-purple-300 tracking-widest uppercase">Daily Horoscope Portal</p>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="px-3 py-1.5 rounded-lg bg-purple-900/40 hover:bg-purple-900/70 border border-purple-700/50 text-xs font-semibold text-purple-200 transition">
+          <i class="fa-solid fa-arrow-left mr-1"></i> Love Oracle
+        </a>
+        <a href="celestial-oracle.apk" download class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-emerald-600 to-teal-500 text-xs font-semibold text-white">
+          <i class="fa-brands fa-android"><span>APK</span></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="max-w-3xl mx-auto px-4 py-8 md:py-12 w-full flex-grow">
+
+    <!-- Hero Title -->
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-900/40 border border-purple-500/30 text-xs font-semibold text-purple-300 mb-3">
+        <i class="fa-solid fa-sun text-amber-300"></i>
+        <span>DAILY CELESTIAL ALIGNMENT</span>
+      </div>
+      <h2 class="font-cinzel text-3xl md:text-5xl font-extrabold text-white tracking-wide mb-3 glow-gold">
+        YOUR DAILY HOROSCOPE
+      </h2>
+      <p class="text-slate-300 text-sm md:text-base max-w-xl mx-auto">
+        Select your zodiac sign below to unlock today's custom astrological forecast, romantic vibrations, and cosmic guidance.
+      </p>
+    </div>
+
+    <!-- Horoscope Selector Form -->
+    <div class="glass-card rounded-2xl p-6 md:p-8 shadow-2xl mb-10">
+      <form id="horoscopeForm" class="space-y-5">
+        <div>
+          <label class="block text-xs font-medium text-amber-300 uppercase tracking-widest mb-2">Choose Your Zodiac Sign</label>
+          <select id="zodiacSelect" required
+            class="w-full bg-cosmic-900/90 border border-purple-700/60 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-pink-500 transition">
+            <option value="" disabled selected>-- Select Your Sign --</option>
+            <option value="Aries">Aries ♈ (Mar 21 - Apr 19)</option>
+            <option value="Taurus">Taurus ♉ (Apr 20 - May 20)</option>
+            <option value="Gemini">Gemini ♊ (May 21 - Jun 20)</option>
+            <option value="Cancer">Cancer ♋ (Jun 21 - Jul 22)</option>
+            <option value="Leo">Leo ♌ (Jul 23 - Aug 22)</option>
+            <option value="Virgo">Virgo ♍ (Aug 23 - Sep 22)</option>
+            <option value="Libra">Libra ♎ (Sep 23 - Oct 22)</option>
+            <option value="Scorpio">Scorpio ♏ (Oct 23 - Nov 21)</option>
+            <option value="Sagittarius">Sagittarius ♐ (Nov 22 - Dec 21)</option>
+            <option value="Capricorn">Capricorn ♑ (Dec 22 - Jan 19)</option>
+            <option value="Aquarius">Aquarius ♒ (Jan 20 - Feb 18)</option>
+            <option value="Pisces">Pisces ♓ (Feb 19 - Mar 20)</option>
+          </select>
+        </div>
+
+        <button type="submit"
+          class="w-full py-3.5 rounded-xl bg-gradient-to-r from-pink-600 via-purple-600 to-amber-500 hover:from-pink-500 hover:to-amber-400 font-cinzel font-bold text-base text-white shadow-lg shadow-pink-600/30 transition transform hover:-translate-y-0.5">
+          <i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Reveal Today's Forecast
+        </button>
+      </form>
+    </div>
+
+    <!-- Horoscope Result Card -->
+    <div id="horoscopeResult" class="hidden glass-card rounded-2xl p-6 md:p-8 shadow-2xl border-2 border-amber-400/30 space-y-6">
+      
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-purple-800/60 pb-4 gap-2">
+        <div>
+          <span class="text-[10px] text-purple-300 uppercase tracking-widest block">Today's Forecast</span>
+          <h3 id="resultSignTitle" class="font-cinzel text-2xl md:text-3xl font-bold text-amber-200 glow-gold">Aries</h3>
+        </div>
+        <div id="currentDateBadge" class="px-3 py-1 rounded-full bg-purple-900/60 border border-purple-700 text-xs text-purple-200">
+          October 26, 2026
+        </div>
+      </div>
+
+      <!-- Quick Stats Grid -->
+      <div class="grid grid-cols-3 gap-3 text-center">
+        <div class="p-3 rounded-xl bg-cosmic-900/80 border border-purple-800/40">
+          <span class="text-[10px] uppercase text-slate-400 block">Lucky Color</span>
+          <span id="luckyColor" class="text-xs sm:text-sm font-bold text-pink-400">Crimson Red</span>
+        </div>
+        <div class="p-3 rounded-xl bg-cosmic-900/80 border border-purple-800/40">
+          <span class="text-[10px] uppercase text-slate-400 block">Lucky Number</span>
+          <span id="luckyNumber" class="text-xs sm:text-sm font-bold text-amber-300">7</span>
+        </div>
+        <div class="p-3 rounded-xl bg-cosmic-900/80 border border-purple-800/40">
+          <span class="text-[10px] uppercase text-slate-400 block">Soulmate Match</span>
+          <span id="soulmateSign" class="text-xs sm:text-sm font-bold text-purple-300">Leo</span>
+        </div>
+      </div>
+
+      <!-- Detailed Horoscopes -->
+      <div class="space-y-4">
+        <div class="p-4 rounded-xl bg-purple-950/40 border border-purple-800/40">
+          <h4 class="font-cinzel text-sm font-bold text-amber-300 mb-1 flex items-center gap-2">
+            <i class="fa-solid fa-heart text-pink-400"></i> Romance & Relationships
+          </h4>
+          <p id="loveForecast" class="text-slate-200 text-xs sm:text-sm leading-relaxed">
+            Select a sign above to reveal your romantic forecast.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-purple-950/40 border border-purple-800/40">
+          <h4 class="font-cinzel text-sm font-bold text-amber-300 mb-1 flex items-center gap-2">
+            <i class="fa-solid fa-star text-amber-400"></i> General Cosmic Energy
+          </h4>
+          <p id="energyForecast" class="text-slate-200 text-xs sm:text-sm leading-relaxed">
+            Your cosmic energy reading will appear here.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-cosmic-border/40 py-6 bg-cosmic-900/40 text-center text-xs text-slate-500">
+    <p>© Celestial Oracle | Daily Astrological Portal</p>
+  </footer>
+
+  <!-- Horoscope Script Logic -->
+  <script>
+    // Format Today's Date
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('currentDateBadge').textContent = new Date().toLocaleDateString('en-US', options);
+
+    const horoscopeData = {
+      "Aries": {
+        color: "Ruby Red", number: "9", match: "Leo",
+        love: "Passionate alignment fills your relationship sector today. If single, an unexpected conversation could spark deep curiosity. Committed pairs will find joy in tackling a shared challenge together.",
+        energy: "Your ruling planet Mars infuses you with high momentum. Channel this drive into completing personal milestones."
+      },
+      "Taurus": {
+        color: "Emerald Green", number: "6", match: "Virgo",
+        love: "Stability and deep emotional security highlight your love life. It's a wonderful evening for a cozy, intimate dinner at home with your partner.",
+        energy: "Grounding energies surround you. Focus on financial clarity and self-care routines."
+      },
+      "Gemini": {
+        color: "Bright Yellow", number: "5", match: "Libra",
+        love: "Communication flows effortlessly. Playful banter and witty exchanges will draw your partner closer to your heart than ever before.",
+        energy: "Mental agility is at its peak. Excellent day for learning something new or planning a trip."
+      },
+      "Cancer": {
+        color: "Silver", number: "2", match: "Scorpio",
+        love: "Vulnerability is your superpower today. Opening up about your inner dreams will foster unbreakable trust with your soulmate.",
+        energy: "Intuition is heightened. Trust your gut feelings regarding upcoming decisions."
+      },
+      "Leo": {
+        color: "Golden Sun", number: "1", match: "Aries",
+        love: "Your natural charisma is magnetic. Expect compliments and affectionate gestures from your partner or admirers.",
+        energy: "Leadership qualities shine brightly. Take center stage in group projects or creative endeavors."
+      },
+      "Virgo": {
+        color: "Navy Blue", number: "4", match: "Taurus",
+        love: "Acts of service speak louder than words today. Helping your partner with a small task will mean the world to them.",
+        energy: "Organization and decluttering bring profound peace of mind. Streamline your workspace."
+      },
+      "Libra": {
+        color: "Pastel Pink", number: "7", match: "Gemini",
+        love: "Harmony is restored in areas of past tension. Romantic aesthetics and shared art or music will deepen your bond.",
+        energy: "Diplomacy and balance guide your interactions. Excellent time for negotiations."
+      },
+      "Scorpio": {
+        color: "Deep Crimson", number: "8", match: "Cancer",
+        love: "Magnetic intensity surrounds your romantic life. Deep soulful connections take precedence over surface talk.",
+        energy: "Transformation and reinvention are favored. Let go of past habits that no longer serve you."
+      },
+      "Sagittarius": {
+        color: "Purple", number: "3", match: "Aquarius",
+        love: "Adventure calls! Plan an outdoor excursion or a spontaneous getaway with your special someone.",
+        energy: "Optimism and expansion are your cosmic allies. Broaden your horizons."
+      },
+      "Capricorn": {
+        color: "Charcoal Grey", number: "8", match: "Virgo",
+        love: "Long-term planning with your partner brings great satisfaction. Discussing future milestones strengthens your foundation.",
+        energy: "Disciplined focus helps you clear your backlog of tasks with remarkable speed."
+      },
+      "Aquarius": {
+        color: "Electric Blue", number: "11", match: "Sagittarius",
+        love: "Intellectual connection sparks romance. Discussing deep philosophical ideas will make you feel profoundly understood.",
+        energy: "Innovative ideas flow freely. Embrace your unique perspective without hesitation."
+      },
+      "Pisces": {
+        color: "Seafoam Green", number: "7", match: "Scorpio",
+        love: "Dreamy romantic energy envelops your day. Creative expression, poetry, or music will amplify your bond.",
+        energy: "Your imagination is boundless. Dedicate time to artistic or spiritual practices."
+      }
+    };
+
+    document.getElementById('horoscopeForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const selectedSign = document.getElementById('zodiacSelect').value;
+      const data = horoscopeData[selectedSign];
+
+      if (data) {
+        document.getElementById('resultSignTitle').textContent = selectedSign + " Horoscope";
+        document.getElementById('luckyColor').textContent = data.color;
+        document.getElementById('luckyNumber').textContent = data.number;
+        document.getElementById('soulmateSign').textContent = data.match;
+        document.getElementById('loveForecast').textContent = data.love;
+        document.getElementById('energyForecast').textContent = data.energy;
+
+        const resultCard = document.getElementById('horoscopeResult');
+        resultCard.classList.remove('hidden');
+        resultCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  </script>
+</body>
+</html>
