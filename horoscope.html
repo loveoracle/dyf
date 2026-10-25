@@ -78,14 +78,14 @@
           <h1 class="font-cinzel font-bold text-lg md:text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-pink-300 to-purple-200">
             CELESTIAL ORACLE
           </h1>
-          <p class="text-[10px] text-purple-300 tracking-widest uppercase">Daily Horoscope Portal</p>
+          <p class="text-[10px] text-purple-300 tracking-widest uppercase">দৈনিক রাশিফল ও জন্মছক পোর্টাল</p>
         </div>
       </div>
 
       <!-- Navigation Links -->
       <div class="flex items-center gap-3">
         <a href="index.html" class="px-3 py-1.5 rounded-lg bg-purple-900/40 hover:bg-purple-900/70 border border-purple-700/50 text-xs font-semibold text-purple-200 transition">
-          <i class="fa-solid fa-arrow-left mr-1"></i> Love Oracle
+          <i class="fa-solid fa-arrow-left mr-1"></i> লাভ ওরাকল
         </a>
       </div>
     </div>
@@ -98,42 +98,43 @@
     <div class="text-center mb-10">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-900/40 border border-purple-500/30 text-xs font-semibold text-purple-300 mb-3">
         <i class="fa-solid fa-sun text-amber-300"></i>
-        <span>DAILY CELESTIAL ALIGNMENT</span>
+        <span>ব্যক্তিগত মহাজাগতিক পূর্বাভাস</span>
       </div>
       <h2 class="font-cinzel text-3xl md:text-5xl font-extrabold text-white tracking-wide mb-3 glow-gold">
-        YOUR DAILY HOROSCOPE
+        আপনার দৈনিক রাশিফল
       </h2>
       <p class="text-slate-300 text-sm md:text-base max-w-xl mx-auto">
-        Select your zodiac sign below to unlock today's custom astrological forecast, romantic vibrations, and cosmic guidance.
+        আপনার নাম এবং জন্মতারিখ প্রবেশ করান যাতে গ্রহের অবস্থান অনুযায়ী আপনার নিখুঁত দৈনিক পূর্বাভাস গণনা করা যায়।
       </p>
     </div>
 
-    <!-- Horoscope Selector Form -->
+    <!-- Personal Input Form -->
     <div class="glass-card rounded-2xl p-6 md:p-8 shadow-2xl mb-10">
       <form id="horoscopeForm" class="space-y-5">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-medium text-amber-300 uppercase tracking-widest mb-1.5">আপনার নাম (Full Name)</label>
+            <input type="text" id="userName" placeholder="যেমন: আব্দুর রহমান" required
+              class="w-full bg-cosmic-900/90 border border-purple-700/60 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-pink-500 transition">
+          </div>
+
+          <div>
+            <label class="block text-xs font-medium text-amber-300 uppercase tracking-widest mb-1.5">জন্মতারিখ (Date of Birth)</label>
+            <input type="date" id="userDob" required
+              class="w-full bg-cosmic-900/90 border border-purple-700/60 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-pink-500 transition">
+          </div>
+        </div>
+
         <div>
-          <label class="block text-xs font-medium text-amber-300 uppercase tracking-widest mb-2">Choose Your Zodiac Sign</label>
-          <select id="zodiacSelect" required
+          <label class="block text-xs font-medium text-amber-300 uppercase tracking-widest mb-1.5">সম্পর্কের শুরুর তারিখ বা বিশেষ দিন (ঐচ্ছিক)</label>
+          <input type="date" id="specialDate"
             class="w-full bg-cosmic-900/90 border border-purple-700/60 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-pink-500 transition">
-            <option value="" disabled selected>-- Select Your Sign --</option>
-            <option value="Aries">Aries ♈ (Mar 21 - Apr 19)</option>
-            <option value="Taurus">Taurus ♉ (Apr 20 - May 20)</option>
-            <option value="Gemini">Gemini ♊ (May 21 - Jun 20)</option>
-            <option value="Cancer">Cancer ♋ (Jun 21 - Jul 22)</option>
-            <option value="Leo">Leo ♌ (Jul 23 - Aug 22)</option>
-            <option value="Virgo">Virgo ♍ (Aug 23 - Sep 22)</option>
-            <option value="Libra">Libra ♎ (Sep 23 - Oct 22)</option>
-            <option value="Scorpio">Scorpio ♏ (Oct 23 - Nov 21)</option>
-            <option value="Sagittarius">Sagittarius ♐ (Nov 22 - Dec 21)</option>
-            <option value="Capricorn">Capricorn ♑ (Dec 22 - Jan 19)</option>
-            <option value="Aquarius">Aquarius ♒ (Jan 20 - Feb 18)</option>
-            <option value="Pisces">Pisces ♓ (Feb 19 - Mar 20)</option>
-          </select>
         </div>
 
         <button type="submit"
           class="w-full py-3.5 rounded-xl bg-gradient-to-r from-pink-600 via-purple-600 to-amber-500 hover:from-pink-500 hover:to-amber-400 font-cinzel font-bold text-base text-white shadow-lg shadow-pink-600/30 transition transform hover:-translate-y-0.5">
-          <i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Reveal Today's Forecast
+          <i class="fa-solid fa-wand-magic-sparkles mr-2"></i> আমার আজকের রাশিফল দেখুন
         </button>
       </form>
     </div>
@@ -143,8 +144,8 @@
       
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-purple-800/60 pb-4 gap-2">
         <div>
-          <span class="text-[10px] text-purple-300 uppercase tracking-widest block">Today's Forecast</span>
-          <h3 id="resultSignTitle" class="font-cinzel text-2xl md:text-3xl font-bold text-amber-200 glow-gold">Aries</h3>
+          <span id="greetingTitle" class="text-[10px] text-purple-300 uppercase tracking-widest block">ব্যক্তিগত রাশিফল</span>
+          <h3 id="resultSignTitle" class="font-cinzel text-2xl md:text-3xl font-bold text-amber-200 glow-gold">মেষ রাশি</h3>
         </div>
         <div id="currentDateBadge" class="px-3 py-1 rounded-full bg-purple-900/60 border border-purple-700 text-xs text-purple-200">
           October 26, 2026
@@ -154,16 +155,16 @@
       <!-- Quick Stats Grid -->
       <div class="grid grid-cols-3 gap-3 text-center">
         <div class="p-3 rounded-xl bg-cosmic-900/80 border border-purple-800/40">
-          <span class="text-[10px] uppercase text-slate-400 block">Lucky Color</span>
-          <span id="luckyColor" class="text-xs sm:text-sm font-bold text-pink-400">Crimson Red</span>
+          <span class="text-[10px] uppercase text-slate-400 block">শুভ রং</span>
+          <span id="luckyColor" class="text-xs sm:text-sm font-bold text-pink-400">-</span>
         </div>
         <div class="p-3 rounded-xl bg-cosmic-900/80 border border-purple-800/40">
-          <span class="text-[10px] uppercase text-slate-400 block">Lucky Number</span>
-          <span id="luckyNumber" class="text-xs sm:text-sm font-bold text-amber-300">7</span>
+          <span class="text-[10px] uppercase text-slate-400 block">জীবন সংখ্যা (Life Path)</span>
+          <span id="luckyNumber" class="text-xs sm:text-sm font-bold text-amber-300">-</span>
         </div>
         <div class="p-3 rounded-xl bg-cosmic-900/80 border border-purple-800/40">
-          <span class="text-[10px] uppercase text-slate-400 block">Soulmate Match</span>
-          <span id="soulmateSign" class="text-xs sm:text-sm font-bold text-purple-300">Leo</span>
+          <span class="text-[10px] uppercase text-slate-400 block">অনুকূল রাশি</span>
+          <span id="soulmateSign" class="text-xs sm:text-sm font-bold text-purple-300">-</span>
         </div>
       </div>
 
@@ -171,19 +172,19 @@
       <div class="space-y-4">
         <div class="p-4 rounded-xl bg-purple-950/40 border border-purple-800/40">
           <h4 class="font-cinzel text-sm font-bold text-amber-300 mb-1 flex items-center gap-2">
-            <i class="fa-solid fa-heart text-pink-400"></i> Romance & Relationships
+            <i class="fa-solid fa-heart text-pink-400"></i> প্রেম ও সম্পর্ক (Romance & Relationships)
           </h4>
           <p id="loveForecast" class="text-slate-200 text-xs sm:text-sm leading-relaxed">
-            Select a sign above to reveal your romantic forecast.
+            -
           </p>
         </div>
 
         <div class="p-4 rounded-xl bg-purple-950/40 border border-purple-800/40">
           <h4 class="font-cinzel text-sm font-bold text-amber-300 mb-1 flex items-center gap-2">
-            <i class="fa-solid fa-star text-amber-400"></i> General Cosmic Energy
+            <i class="fa-solid fa-star text-amber-400"></i> মহাজাগতিক শক্তি ও ভাগ্য (Cosmic Energy & Fortune)
           </h4>
           <p id="energyForecast" class="text-slate-200 text-xs sm:text-sm leading-relaxed">
-            Your cosmic energy reading will appear here.
+            -
           </p>
         </div>
       </div>
@@ -194,95 +195,88 @@
 
   <!-- Footer -->
   <footer class="border-t border-cosmic-border/40 py-6 bg-cosmic-900/40 text-center text-xs text-slate-500">
-    <p>© Celestial Oracle | Daily Astrological Portal</p>
+    <p>© Celestial Oracle | দৈনিক জ্যোতিষশাস্ত্রীয় পোর্টাল</p>
   </footer>
 
   <!-- Horoscope Script Logic -->
   <script>
-    // Format Today's Date
+    // Format Today's Date in Bengali Locale
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    document.getElementById('currentDateBadge').textContent = new Date().toLocaleDateString('en-US', options);
+    document.getElementById('currentDateBadge').textContent = new Date().toLocaleDateString('bn-BD', options);
 
-    const horoscopeData = {
-      "Aries": {
-        color: "Ruby Red", number: "9", match: "Leo",
-        love: "Passionate alignment fills your relationship sector today. If single, an unexpected conversation could spark deep curiosity. Committed pairs will find joy in tackling a shared challenge together.",
-        energy: "Your ruling planet Mars infuses you with high momentum. Channel this drive into completing personal milestones."
-      },
-      "Taurus": {
-        color: "Emerald Green", number: "6", match: "Virgo",
-        love: "Stability and deep emotional security highlight your love life. It's a wonderful evening for a cozy, intimate dinner at home with your partner.",
-        energy: "Grounding energies surround you. Focus on financial clarity and self-care routines."
-      },
-      "Gemini": {
-        color: "Bright Yellow", number: "5", match: "Libra",
-        love: "Communication flows effortlessly. Playful banter and witty exchanges will draw your partner closer to your heart than ever before.",
-        energy: "Mental agility is at its peak. Excellent day for learning something new or planning a trip."
-      },
-      "Cancer": {
-        color: "Silver", number: "2", match: "Scorpio",
-        love: "Vulnerability is your superpower today. Opening up about your inner dreams will foster unbreakable trust with your soulmate.",
-        energy: "Intuition is heightened. Trust your gut feelings regarding upcoming decisions."
-      },
-      "Leo": {
-        color: "Golden Sun", number: "1", match: "Aries",
-        love: "Your natural charisma is magnetic. Expect compliments and affectionate gestures from your partner or admirers.",
-        energy: "Leadership qualities shine brightly. Take center stage in group projects or creative endeavors."
-      },
-      "Virgo": {
-        color: "Navy Blue", number: "4", match: "Taurus",
-        love: "Acts of service speak louder than words today. Helping your partner with a small task will mean the world to them.",
-        energy: "Organization and decluttering bring profound peace of mind. Streamline your workspace."
-      },
-      "Libra": {
-        color: "Pastel Pink", number: "7", match: "Gemini",
-        love: "Harmony is restored in areas of past tension. Romantic aesthetics and shared art or music will deepen your bond.",
-        energy: "Diplomacy and balance guide your interactions. Excellent time for negotiations."
-      },
-      "Scorpio": {
-        color: "Deep Crimson", number: "8", match: "Cancer",
-        love: "Magnetic intensity surrounds your romantic life. Deep soulful connections take precedence over surface talk.",
-        energy: "Transformation and reinvention are favored. Let go of past habits that no longer serve you."
-      },
-      "Sagittarius": {
-        color: "Purple", number: "3", match: "Aquarius",
-        love: "Adventure calls! Plan an outdoor excursion or a spontaneous getaway with your special someone.",
-        energy: "Optimism and expansion are your cosmic allies. Broaden your horizons."
-      },
-      "Capricorn": {
-        color: "Charcoal Grey", number: "8", match: "Virgo",
-        love: "Long-term planning with your partner brings great satisfaction. Discussing future milestones strengthens your foundation.",
-        energy: "Disciplined focus helps you clear your backlog of tasks with remarkable speed."
-      },
-      "Aquarius": {
-        color: "Electric Blue", number: "11", match: "Sagittarius",
-        love: "Intellectual connection sparks romance. Discussing deep philosophical ideas will make you feel profoundly understood.",
-        energy: "Innovative ideas flow freely. Embrace your unique perspective without hesitation."
-      },
-      "Pisces": {
-        color: "Seafoam Green", number: "7", match: "Scorpio",
-        love: "Dreamy romantic energy envelops your day. Creative expression, poetry, or music will amplify your bond.",
-        energy: "Your imagination is boundless. Dedicate time to artistic or spiritual practices."
+    // Automatic Zodiac Calculator based on Birthdate
+    function getZodiacSign(dateString) {
+      const date = new Date(dateString);
+      const day = date.getUTCDate();
+      const month = date.getUTCMonth() + 1;
+
+      if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) return { name: "মেষ (Aries)", color: "উজ্জ্বল লাল", match: "সিংহ" };
+      if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) return { name: "বৃষ (Taurus)", color: "زمردی সবুজ", match: "কন্যা" };
+      if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) return { name: "মিথুন (Gemini)", color: "উজ্জ্বল হলুদ", match: "তুলা" };
+      if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) return { name: "কর্কট (Cancer)", color: "রৌপ্য", match: "বৃশ্চিক" };
+      if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) return { name: "সিংহ (Leo)", color: "সোনালী সূর্য", match: "মেষ" };
+      if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) return { name: "কন্যা (Virgo)", color: "নৌকা নীল", match: "বৃষ" };
+      if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) return { name: "তুলা (Libra)", color: "হালকা গোলাপি", match: "মিথুন" };
+      if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) return { name: "বৃশ্চিক (Scorpio)", color: "গাঢ় লাল", match: "কর্কট" };
+      if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) return { name: "ধনু (Sagittarius)", color: "বেগুনি", match: "কুম্ভ" };
+      if ((month == 12 && day >= 22) || (month == 1.1 && day <= 19)) return { name: "মকর (Capricorn)", color: "ধূসর", match: "কন্যা" };
+      if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return { name: "কুম্ভ (Aquarius)", color: "বৈদ্যুতিক নীল", match: "ধনু" };
+      return { name: "মীন (Pisces)", color: "সামুদ্রিক সবুজ", match: "বৃশ্চিক" };
+    }
+
+    // Numerology Calculation from Birthdate
+    function calculateLifePath(dateString) {
+      const clean = dateString.replace(/-/g, '');
+      let sum = 0;
+      for (let char of clean) {
+        sum += parseInt(char) || 0;
       }
-    };
+      while (sum > 9 && sum !== 11 && sum !== 22) {
+        sum = sum.toString().split('').reduce((acc, digit) => acc + parseInt(digit), 0);
+      }
+      return sum;
+    }
 
     document.getElementById('horoscopeForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const selectedSign = document.getElementById('zodiacSelect').value;
-      const data = horoscopeData[selectedSign];
+      
+      const userName = document.getElementById('userName').value.trim();
+      const userDob = document.getElementById('userDob').value;
+      const specialDate = document.getElementById('specialDate').value;
 
-      if (data) {
-        document.getElementById('resultSignTitle').textContent = selectedSign + " Horoscope";
-        document.getElementById('luckyColor').textContent = data.color;
-        document.getElementById('luckyNumber').textContent = data.number;
-        document.getElementById('soulmateSign').textContent = data.match;
-        document.getElementById('loveForecast').textContent = data.love;
-        document.getElementById('energyForecast').textContent = data.energy;
+      const zodiac = getZodiacSign(userDob);
+      const lifePath = calculateLifePath(userDob);
 
-        const resultCard = document.getElementById('horoscopeResult');
-        resultCard.classList.remove('hidden');
-        resultCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
+      // Dynamic Prophecies based on Name and Date character codes
+      const charSum = userName.toLowerCase().split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+      
+      const loveFortunes = [
+        `प्रिय ${userName}, আজ আপনার সম্পর্কের ক্ষেত্রে রোমান্টিক আবহ বিরাজ করবে। মনের মানুষটির সাথে দারুণ সময় কাটানোর যোগ রয়েছে।`,
+        `আজ ${userName}-এর জন্য প্রেমের ক্ষেত্রে খোলামেলা কথোপকথন খুব ফলপ্রসূ হবে। সঙ্গীর সাথে ভুল বোঝাবুঝি দূর হয়ে যাবে।`,
+        `মহাজাগতিক প্রভাবে আজ আপনার আকর্ষণ ক্ষমতা বৃদ্ধি পাবে। সম্পর্কের বন্ধন আরও দৃঢ় করার জন্য এটি উপযুক্ত দিন।`
+      ];
+
+      const energyFortunes = [
+        `আপনার জন্মছক ও জীবন সংখ্যা (${lifePath}) অনুযায়ী আজ কর্মক্ষেত্রে আপনার নেতৃত্ব দেওয়ার ক্ষমতা প্রশংসিত হবে। আর্থিক বিষয়ে সতর্ক থাকুন।`,
+        `আজ আপনার আত্মবিশ্বাস তুঙ্গে থাকবে। দীর্ঘ and আটকে থাকা পরিকল্পনাগুলো পুনরায় শুরু করার জন্য এটি শ্রেষ্ঠ সময়।`,
+        `মনকে শান্ত রাখুন এবং অপ্রয়োজনীয় চিন্তা থেকে দূরে থাকুন। স্বাস্থ্য ও মানসিক প্রশান্তির জন্য মেডিটেশন করতে পারেন।`
+      ];
+
+      const selectedLove = loveFortunes[charSum % loveFortunes.length];
+      const selectedEnergy = energyFortunes[(charSum + lifePath) % energyFortunes.length];
+
+      // Update UI Result
+      document.getElementById('greetingTitle').textContent = `${userName}-এর ব্যক্তিগত রাশিফল`;
+      document.getElementById('resultSignTitle').textContent = zodiac.name;
+      document.getElementById('luckyColor').textContent = zodiac.color;
+      document.getElementById('luckyNumber').textContent = "সংখ্যা " + lifePath;
+      document.getElementById('soulmateSign').textContent = zodiac.match;
+      document.getElementById('loveForecast').textContent = selectedLove;
+      document.getElementById('energyForecast').textContent = selectedEnergy;
+
+      const resultCard = document.getElementById('horoscopeResult');
+      resultCard.classList.remove('hidden');
+      resultCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   </script>
 </body>
